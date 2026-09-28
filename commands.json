@@ -1,0 +1,8522 @@
+[
+  {
+    "id": "ls",
+    "command": "ls",
+    "title": "List files in a folder",
+    "summary": "Show the names of files and folders in the current directory (or another path you give it).",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "list",
+      "files",
+      "folder",
+      "directory",
+      "show",
+      "contents"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "List this folder",
+        "cmd": "ls"
+      },
+      {
+        "label": "List with details and hidden files",
+        "cmd": "ls -lah"
+      },
+      {
+        "label": "List another folder",
+        "cmd": "ls ~/Downloads"
+      }
+    ],
+    "flags": [
+      {
+        "flag": "-l",
+        "meaning": "Long format (permissions, size, date)"
+      },
+      {
+        "flag": "-a",
+        "meaning": "Include hidden files (dotfiles)"
+      },
+      {
+        "flag": "-h",
+        "meaning": "Human-readable sizes"
+      }
+    ],
+    "related": [
+      "eza",
+      "tree",
+      "pwd"
+    ],
+    "man": "ls",
+    "starter": true
+  },
+  {
+    "id": "eza",
+    "command": "eza",
+    "title": "List files (modern ls)",
+    "summary": "A friendlier ls with colors, icons, and git status when available.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "list",
+      "files",
+      "ls",
+      "modern",
+      "tree"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "List this folder",
+        "cmd": "eza"
+      },
+      {
+        "label": "Tree view two levels deep",
+        "cmd": "eza --tree --level=2"
+      },
+      {
+        "label": "Long listing",
+        "cmd": "eza -lah"
+      }
+    ],
+    "flags": [
+      {
+        "flag": "--tree",
+        "meaning": "Show a directory tree"
+      },
+      {
+        "flag": "-l",
+        "meaning": "Long format"
+      }
+    ],
+    "related": [
+      "ls",
+      "tree"
+    ],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "pwd",
+    "command": "pwd",
+    "title": "Show current folder",
+    "summary": "Print the full path of the directory you are in right now.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "path",
+      "directory",
+      "where",
+      "current",
+      "folder",
+      "location"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Print working directory",
+        "cmd": "pwd"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "ls",
+      "cd"
+    ],
+    "man": "pwd",
+    "starter": true
+  },
+  {
+    "id": "cd",
+    "command": "cd",
+    "title": "Change folder",
+    "summary": "Move into another directory. Use ~ for home and - for the previous folder.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "change",
+      "directory",
+      "folder",
+      "navigate",
+      "goto"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Go home",
+        "cmd": "cd"
+      },
+      {
+        "label": "Go to Downloads",
+        "cmd": "cd ~/Downloads"
+      },
+      {
+        "label": "Go back to previous folder",
+        "cmd": "cd -"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "pwd",
+      "ls",
+      "pushd"
+    ],
+    "man": null,
+    "starter": true
+  },
+  {
+    "id": "mkdir",
+    "command": "mkdir",
+    "title": "Create a folder",
+    "summary": "Make a new directory. -p creates parent folders if they are missing.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "create",
+      "folder",
+      "directory",
+      "make",
+      "new"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Create a folder",
+        "cmd": "mkdir notes"
+      },
+      {
+        "label": "Create nested folders",
+        "cmd": "mkdir -p projects/app/src"
+      }
+    ],
+    "flags": [
+      {
+        "flag": "-p",
+        "meaning": "Create parents as needed; no error if it exists"
+      }
+    ],
+    "related": [
+      "touch",
+      "rm"
+    ],
+    "man": "mkdir",
+    "starter": true
+  },
+  {
+    "id": "touch",
+    "command": "touch",
+    "title": "Create an empty file",
+    "summary": "Create a new empty file, or update the timestamp on an existing one.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "create",
+      "file",
+      "empty",
+      "new"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Create a file",
+        "cmd": "touch notes.txt"
+      },
+      {
+        "label": "Create several files",
+        "cmd": "touch a.txt b.txt"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "mkdir",
+      "echo"
+    ],
+    "man": "touch",
+    "starter": false
+  },
+  {
+    "id": "cp",
+    "command": "cp",
+    "title": "Copy files or folders",
+    "summary": "Duplicate a file or directory to another location.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "copy",
+      "duplicate",
+      "backup",
+      "file",
+      "folder"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Copy a file",
+        "cmd": "cp report.txt report.bak"
+      },
+      {
+        "label": "Copy a folder recursively",
+        "cmd": "cp -r project/ project-backup/"
+      }
+    ],
+    "flags": [
+      {
+        "flag": "-r",
+        "meaning": "Copy directories recursively"
+      },
+      {
+        "flag": "-i",
+        "meaning": "Ask before overwriting"
+      },
+      {
+        "flag": "-v",
+        "meaning": "Show what is being copied"
+      }
+    ],
+    "related": [
+      "mv",
+      "rsync"
+    ],
+    "man": "cp",
+    "starter": true
+  },
+  {
+    "id": "mv",
+    "command": "mv",
+    "title": "Move or rename",
+    "summary": "Move a file/folder, or rename it in place.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "move",
+      "rename",
+      "file",
+      "folder"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Rename a file",
+        "cmd": "mv old.txt new.txt"
+      },
+      {
+        "label": "Move into a folder",
+        "cmd": "mv notes.txt Documents/"
+      }
+    ],
+    "flags": [
+      {
+        "flag": "-i",
+        "meaning": "Ask before overwriting"
+      }
+    ],
+    "related": [
+      "cp",
+      "rename"
+    ],
+    "man": "mv",
+    "starter": true
+  },
+  {
+    "id": "rm",
+    "command": "rm",
+    "title": "Delete files and folders",
+    "summary": "Remove files. Use -r for directories. Be careful: there is no trash by default.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "delete",
+      "remove",
+      "erase",
+      "folders",
+      "files",
+      "rm"
+    ],
+    "danger": "high",
+    "examples": [
+      {
+        "label": "Delete a file",
+        "cmd": "rm file.txt"
+      },
+      {
+        "label": "Delete a folder and everything in it",
+        "cmd": "rm -rf folder/"
+      },
+      {
+        "label": "Ask before each delete",
+        "cmd": "rm -i *.log"
+      }
+    ],
+    "flags": [
+      {
+        "flag": "-r",
+        "meaning": "Recursive — required for directories"
+      },
+      {
+        "flag": "-f",
+        "meaning": "Force — never prompt"
+      },
+      {
+        "flag": "-i",
+        "meaning": "Interactive — ask first"
+      }
+    ],
+    "related": [
+      "rmdir",
+      "trash-put",
+      "find",
+      "fd"
+    ],
+    "man": "rm",
+    "starter": true
+  },
+  {
+    "id": "rmdir",
+    "command": "rmdir",
+    "title": "Delete an empty folder",
+    "summary": "Remove a directory only if it is empty.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "delete",
+      "remove",
+      "empty",
+      "folder",
+      "directory",
+      "folders"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Remove empty folder",
+        "cmd": "rmdir old-folder"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "rm",
+      "mkdir"
+    ],
+    "man": "rmdir",
+    "starter": false
+  },
+  {
+    "id": "tree",
+    "command": "tree",
+    "title": "Show a folder tree",
+    "summary": "Print a nested view of directories and files.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "tree",
+      "folders",
+      "structure",
+      "list",
+      "hierarchy"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Tree of this folder",
+        "cmd": "tree"
+      },
+      {
+        "label": "Only two levels",
+        "cmd": "tree -L 2"
+      },
+      {
+        "label": "Directories only",
+        "cmd": "tree -d"
+      }
+    ],
+    "flags": [
+      {
+        "flag": "-L",
+        "meaning": "Limit depth"
+      },
+      {
+        "flag": "-d",
+        "meaning": "Directories only"
+      }
+    ],
+    "related": [
+      "ls",
+      "eza",
+      "find"
+    ],
+    "man": "tree",
+    "starter": false
+  },
+  {
+    "id": "find",
+    "command": "find",
+    "title": "Find files by name or type",
+    "summary": "Search a directory tree for files matching rules (name, size, time, and more).",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "find",
+      "search",
+      "files",
+      "locate",
+      "name",
+      "delete"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Find by name",
+        "cmd": "find . -name '*.pdf'"
+      },
+      {
+        "label": "Find directories named build",
+        "cmd": "find . -type d -name build"
+      },
+      {
+        "label": "Find and delete matching files",
+        "cmd": "find . -name '*.tmp' -delete"
+      }
+    ],
+    "flags": [
+      {
+        "flag": "-name",
+        "meaning": "Match a filename pattern"
+      },
+      {
+        "flag": "-type",
+        "meaning": "f=file, d=directory"
+      },
+      {
+        "flag": "-delete",
+        "meaning": "Delete matches (careful)"
+      }
+    ],
+    "related": [
+      "fd",
+      "locate",
+      "grep"
+    ],
+    "man": "find",
+    "starter": true
+  },
+  {
+    "id": "fd",
+    "command": "fd",
+    "title": "Find files fast",
+    "summary": "A simpler, faster find. Respects .gitignore by default.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "find",
+      "search",
+      "files",
+      "fast",
+      "fd"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Find by name",
+        "cmd": "fd report"
+      },
+      {
+        "label": "Only markdown files",
+        "cmd": "fd -e md"
+      },
+      {
+        "label": "Include ignored files",
+        "cmd": "fd -H secret"
+      }
+    ],
+    "flags": [
+      {
+        "flag": "-e",
+        "meaning": "Filter by extension"
+      },
+      {
+        "flag": "-H",
+        "meaning": "Include hidden / ignored"
+      }
+    ],
+    "related": [
+      "find",
+      "rg"
+    ],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "locate",
+    "command": "locate",
+    "title": "Find files from a database",
+    "summary": "Instant path lookup using a prebuilt index (updated by updatedb).",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "find",
+      "locate",
+      "search",
+      "index",
+      "path"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Locate a program name",
+        "cmd": "locate bash"
+      },
+      {
+        "label": "Case-insensitive",
+        "cmd": "locate -i readme"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "find",
+      "fd",
+      "updatedb"
+    ],
+    "man": "locate",
+    "starter": false
+  },
+  {
+    "id": "updatedb",
+    "command": "updatedb",
+    "title": "Refresh the locate database",
+    "summary": "Rebuild the file name index that locate uses. Often needs sudo.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "locate",
+      "index",
+      "update",
+      "database"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Update locate index",
+        "cmd": "sudo updatedb"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "locate"
+    ],
+    "man": "updatedb",
+    "starter": false
+  },
+  {
+    "id": "basename",
+    "command": "basename",
+    "title": "Get the file name from a path",
+    "summary": "Strip directories and return only the last part of a path.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "filename",
+      "path",
+      "name"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "File name only",
+        "cmd": "basename /home/kimm/notes.txt"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "dirname",
+      "realpath"
+    ],
+    "man": "basename",
+    "starter": false
+  },
+  {
+    "id": "dirname",
+    "command": "dirname",
+    "title": "Get the folder from a path",
+    "summary": "Return the directory portion of a path.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "directory",
+      "path",
+      "folder"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Parent folder",
+        "cmd": "dirname /home/kimm/notes.txt"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "basename",
+      "realpath"
+    ],
+    "man": "dirname",
+    "starter": false
+  },
+  {
+    "id": "realpath",
+    "command": "realpath",
+    "title": "Resolve a full path",
+    "summary": "Print the absolute path, resolving symlinks.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "path",
+      "absolute",
+      "resolve",
+      "symlink"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Absolute path",
+        "cmd": "realpath ./notes.txt"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "readlink",
+      "pwd"
+    ],
+    "man": "realpath",
+    "starter": false
+  },
+  {
+    "id": "ln",
+    "command": "ln",
+    "title": "Create a link",
+    "summary": "Make a hard link or, more commonly, a symbolic link to a file or folder.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "link",
+      "symlink",
+      "shortcut",
+      "alias"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Symbolic link",
+        "cmd": "ln -s ~/Projects/app ~/app"
+      },
+      {
+        "label": "Hard link",
+        "cmd": "ln file.txt file-hard.txt"
+      }
+    ],
+    "flags": [
+      {
+        "flag": "-s",
+        "meaning": "Symbolic link"
+      }
+    ],
+    "related": [
+      "realpath",
+      "ls"
+    ],
+    "man": "ln",
+    "starter": false
+  },
+  {
+    "id": "stat",
+    "command": "stat",
+    "title": "Show file details",
+    "summary": "Print size, permissions, timestamps, and inode information.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "info",
+      "file",
+      "size",
+      "permissions",
+      "dates"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Details for a file",
+        "cmd": "stat notes.txt"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "ls",
+      "file"
+    ],
+    "man": "stat",
+    "starter": false
+  },
+  {
+    "id": "file",
+    "command": "file",
+    "title": "Detect a file type",
+    "summary": "Guess whether a path is text, image, binary, and so on.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "type",
+      "mime",
+      "format",
+      "detect"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "What is this file?",
+        "cmd": "file photo.jpg"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "stat",
+      "xxd"
+    ],
+    "man": "file",
+    "starter": false
+  },
+  {
+    "id": "du",
+    "command": "du",
+    "title": "Disk use of a folder",
+    "summary": "Show how much disk space a directory tree is using.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "disk",
+      "space",
+      "size",
+      "folder",
+      "usage",
+      "big"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Size of this folder",
+        "cmd": "du -sh ."
+      },
+      {
+        "label": "Size of each subfolder",
+        "cmd": "du -h --max-depth=1"
+      }
+    ],
+    "flags": [
+      {
+        "flag": "-s",
+        "meaning": "Total only"
+      },
+      {
+        "flag": "-h",
+        "meaning": "Human-readable"
+      },
+      {
+        "flag": "--max-depth",
+        "meaning": "Limit how deep to report"
+      }
+    ],
+    "related": [
+      "df",
+      "dust",
+      "ncdu"
+    ],
+    "man": "du",
+    "starter": true
+  },
+  {
+    "id": "dust",
+    "command": "dust",
+    "title": "Disk use (visual)",
+    "summary": "A friendlier du that shows a bar chart of the largest folders.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "disk",
+      "space",
+      "size",
+      "usage",
+      "dust"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Biggest folders here",
+        "cmd": "dust"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "du",
+      "df"
+    ],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "df",
+    "command": "df",
+    "title": "Free disk space",
+    "summary": "Show free and used space on mounted filesystems.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "disk",
+      "space",
+      "free",
+      "storage",
+      "capacity"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Human-readable free space",
+        "cmd": "df -h"
+      },
+      {
+        "label": "Inode use",
+        "cmd": "df -ih"
+      }
+    ],
+    "flags": [
+      {
+        "flag": "-h",
+        "meaning": "Human-readable sizes"
+      }
+    ],
+    "related": [
+      "du",
+      "lsblk"
+    ],
+    "man": "df",
+    "starter": true
+  },
+  {
+    "id": "lsblk",
+    "command": "lsblk",
+    "title": "List disks and partitions",
+    "summary": "Show block devices as a tree — disks, partitions, mount points.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "disk",
+      "partition",
+      "mount",
+      "drive",
+      "block"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "List block devices",
+        "cmd": "lsblk"
+      },
+      {
+        "label": "Include filesystems",
+        "cmd": "lsblk -f"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "df",
+      "mount",
+      "fdisk"
+    ],
+    "man": "lsblk",
+    "starter": false
+  },
+  {
+    "id": "mount",
+    "command": "mount",
+    "title": "Mount a filesystem",
+    "summary": "Attach a device or image so you can browse its files.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "mount",
+      "disk",
+      "usb",
+      "filesystem",
+      "attach"
+    ],
+    "danger": "medium",
+    "examples": [
+      {
+        "label": "Show mounted filesystems",
+        "cmd": "mount"
+      },
+      {
+        "label": "Mount a device",
+        "cmd": "sudo mount /dev/sdb1 /mnt"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "umount",
+      "lsblk"
+    ],
+    "man": "mount",
+    "starter": false
+  },
+  {
+    "id": "umount",
+    "command": "umount",
+    "title": "Unmount a filesystem",
+    "summary": "Detach a mounted device safely before unplugging it.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "unmount",
+      "eject",
+      "usb",
+      "disk"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Unmount a path",
+        "cmd": "sudo umount /mnt"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "mount",
+      "lsblk"
+    ],
+    "man": "umount",
+    "starter": false
+  },
+  {
+    "id": "cat",
+    "command": "cat",
+    "title": "Print a file",
+    "summary": "Write a file's contents to the terminal. Fine for short files.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "read",
+      "show",
+      "print",
+      "file",
+      "contents",
+      "view"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Show a file",
+        "cmd": "cat notes.txt"
+      },
+      {
+        "label": "Combine two files",
+        "cmd": "cat a.txt b.txt > both.txt"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "bat",
+      "less",
+      "head"
+    ],
+    "man": "cat",
+    "starter": true
+  },
+  {
+    "id": "bat",
+    "command": "bat",
+    "title": "View a file with syntax color",
+    "summary": "A cat replacement with line numbers and syntax highlighting.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "read",
+      "show",
+      "file",
+      "syntax",
+      "color",
+      "view"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "View a file",
+        "cmd": "bat notes.md"
+      },
+      {
+        "label": "Show as plain (for pipes)",
+        "cmd": "bat -p file.rs"
+      }
+    ],
+    "flags": [
+      {
+        "flag": "-p",
+        "meaning": "Plain mode, good for piping"
+      }
+    ],
+    "related": [
+      "cat",
+      "less"
+    ],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "less",
+    "command": "less",
+    "title": "Scroll through a file",
+    "summary": "Page through long output. q quits, / searches.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "read",
+      "scroll",
+      "page",
+      "view",
+      "pager"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Open a file in a pager",
+        "cmd": "less big.log"
+      },
+      {
+        "label": "Follow a growing log",
+        "cmd": "less +F /var/log/pacman.log"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "cat",
+      "more",
+      "tail"
+    ],
+    "man": "less",
+    "starter": false
+  },
+  {
+    "id": "head",
+    "command": "head",
+    "title": "First lines of a file",
+    "summary": "Show the beginning of a file (default 10 lines).",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "first",
+      "top",
+      "beginning",
+      "lines",
+      "preview"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "First 10 lines",
+        "cmd": "head file.txt"
+      },
+      {
+        "label": "First 20 lines",
+        "cmd": "head -n 20 file.txt"
+      }
+    ],
+    "flags": [
+      {
+        "flag": "-n",
+        "meaning": "Number of lines"
+      }
+    ],
+    "related": [
+      "tail",
+      "less"
+    ],
+    "man": "head",
+    "starter": false
+  },
+  {
+    "id": "tail",
+    "command": "tail",
+    "title": "Last lines of a file",
+    "summary": "Show the end of a file — great for logs. -f follows new lines.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "last",
+      "end",
+      "log",
+      "follow",
+      "lines"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Last 10 lines",
+        "cmd": "tail file.txt"
+      },
+      {
+        "label": "Follow a log live",
+        "cmd": "tail -f /var/log/pacman.log"
+      }
+    ],
+    "flags": [
+      {
+        "flag": "-f",
+        "meaning": "Follow — keep printing new lines"
+      },
+      {
+        "flag": "-n",
+        "meaning": "Number of lines"
+      }
+    ],
+    "related": [
+      "head",
+      "journalctl",
+      "less"
+    ],
+    "man": "tail",
+    "starter": true
+  },
+  {
+    "id": "wc",
+    "command": "wc",
+    "title": "Count lines, words, bytes",
+    "summary": "Measure the size of text in lines, words, or characters.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "count",
+      "lines",
+      "words",
+      "size",
+      "text"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Line count",
+        "cmd": "wc -l file.txt"
+      },
+      {
+        "label": "Words and lines",
+        "cmd": "wc file.txt"
+      }
+    ],
+    "flags": [
+      {
+        "flag": "-l",
+        "meaning": "Lines"
+      },
+      {
+        "flag": "-w",
+        "meaning": "Words"
+      },
+      {
+        "flag": "-c",
+        "meaning": "Bytes"
+      }
+    ],
+    "related": [
+      "cat"
+    ],
+    "man": "wc",
+    "starter": false
+  },
+  {
+    "id": "sort",
+    "command": "sort",
+    "title": "Sort lines",
+    "summary": "Sort text alphabetically or numerically.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "sort",
+      "order",
+      "alphabet",
+      "lines"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Sort lines",
+        "cmd": "sort names.txt"
+      },
+      {
+        "label": "Numeric sort",
+        "cmd": "sort -n numbers.txt"
+      },
+      {
+        "label": "Unique sorted lines",
+        "cmd": "sort -u names.txt"
+      }
+    ],
+    "flags": [
+      {
+        "flag": "-n",
+        "meaning": "Numeric"
+      },
+      {
+        "flag": "-r",
+        "meaning": "Reverse"
+      },
+      {
+        "flag": "-u",
+        "meaning": "Unique"
+      }
+    ],
+    "related": [
+      "uniq",
+      "awk"
+    ],
+    "man": "sort",
+    "starter": false
+  },
+  {
+    "id": "uniq",
+    "command": "uniq",
+    "title": "Remove duplicate lines",
+    "summary": "Collapse repeated adjacent lines. Usually used after sort.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "unique",
+      "duplicates",
+      "dedupe",
+      "lines"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Unique sorted lines",
+        "cmd": "sort names.txt | uniq"
+      },
+      {
+        "label": "Count duplicates",
+        "cmd": "sort names.txt | uniq -c"
+      }
+    ],
+    "flags": [
+      {
+        "flag": "-c",
+        "meaning": "Count occurrences"
+      }
+    ],
+    "related": [
+      "sort"
+    ],
+    "man": "uniq",
+    "starter": false
+  },
+  {
+    "id": "cut",
+    "command": "cut",
+    "title": "Cut columns from text",
+    "summary": "Pick fields from each line using a delimiter.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "columns",
+      "fields",
+      "csv",
+      "text",
+      "extract"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "First column, colon-separated",
+        "cmd": "cut -d: -f1 /etc/passwd"
+      }
+    ],
+    "flags": [
+      {
+        "flag": "-d",
+        "meaning": "Delimiter"
+      },
+      {
+        "flag": "-f",
+        "meaning": "Field numbers"
+      }
+    ],
+    "related": [
+      "awk",
+      "sed"
+    ],
+    "man": "cut",
+    "starter": false
+  },
+  {
+    "id": "tr",
+    "command": "tr",
+    "title": "Translate characters",
+    "summary": "Replace or delete characters in a stream.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "replace",
+      "translate",
+      "characters",
+      "uppercase",
+      "lowercase"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Uppercase",
+        "cmd": "echo hello | tr a-z A-Z"
+      },
+      {
+        "label": "Delete digits",
+        "cmd": "echo a1b2 | tr -d 0-9"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "sed",
+      "awk"
+    ],
+    "man": "tr",
+    "starter": false
+  },
+  {
+    "id": "tee",
+    "command": "tee",
+    "title": "Copy output to a file and the screen",
+    "summary": "Write stdin to a file while still printing it — useful in pipelines.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "save",
+      "pipe",
+      "log",
+      "copy",
+      "output"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Save and show",
+        "cmd": "echo hello | tee hello.txt"
+      },
+      {
+        "label": "Append to a file",
+        "cmd": "echo more | tee -a hello.txt"
+      }
+    ],
+    "flags": [
+      {
+        "flag": "-a",
+        "meaning": "Append instead of overwrite"
+      }
+    ],
+    "related": [
+      "cat"
+    ],
+    "man": "tee",
+    "starter": false
+  },
+  {
+    "id": "echo",
+    "command": "echo",
+    "title": "Print text",
+    "summary": "Write a string to the terminal or into a file with redirection.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "print",
+      "text",
+      "write",
+      "say"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Print a line",
+        "cmd": "echo hello"
+      },
+      {
+        "label": "Write to a file",
+        "cmd": "echo hello > hello.txt"
+      },
+      {
+        "label": "Append to a file",
+        "cmd": "echo world >> hello.txt"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "printf",
+      "cat"
+    ],
+    "man": "echo",
+    "starter": false
+  },
+  {
+    "id": "printf",
+    "command": "printf",
+    "title": "Formatted print",
+    "summary": "Print with format strings (safer/more precise than echo for scripts).",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "print",
+      "format",
+      "text"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Formatted number",
+        "cmd": "printf '%04d\\n' 7"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "echo"
+    ],
+    "man": "printf",
+    "starter": false
+  },
+  {
+    "id": "grep",
+    "command": "grep",
+    "title": "Search text in files",
+    "summary": "Find lines matching a pattern. -r searches directories.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "search",
+      "text",
+      "find",
+      "pattern",
+      "match",
+      "filter"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Search in a file",
+        "cmd": "grep error app.log"
+      },
+      {
+        "label": "Recursive search",
+        "cmd": "grep -r TODO ."
+      },
+      {
+        "label": "Ignore case",
+        "cmd": "grep -i warning app.log"
+      }
+    ],
+    "flags": [
+      {
+        "flag": "-r",
+        "meaning": "Recursive"
+      },
+      {
+        "flag": "-i",
+        "meaning": "Ignore case"
+      },
+      {
+        "flag": "-n",
+        "meaning": "Show line numbers"
+      }
+    ],
+    "related": [
+      "rg",
+      "ag",
+      "find"
+    ],
+    "man": "grep",
+    "starter": true
+  },
+  {
+    "id": "rg",
+    "command": "rg",
+    "title": "Search text fast (ripgrep)",
+    "summary": "A very fast grep that respects .gitignore and is pleasant to read.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "search",
+      "text",
+      "ripgrep",
+      "find",
+      "pattern",
+      "code"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Search the project",
+        "cmd": "rg TODO"
+      },
+      {
+        "label": "TypeScript only",
+        "cmd": "rg -t ts fetch"
+      },
+      {
+        "label": "Fixed string",
+        "cmd": "rg -F 'exact text'"
+      }
+    ],
+    "flags": [
+      {
+        "flag": "-i",
+        "meaning": "Ignore case"
+      },
+      {
+        "flag": "-t",
+        "meaning": "Filter by type"
+      },
+      {
+        "flag": "-F",
+        "meaning": "Literal string, not regex"
+      }
+    ],
+    "related": [
+      "grep",
+      "fd"
+    ],
+    "man": null,
+    "starter": true
+  },
+  {
+    "id": "diff",
+    "command": "diff",
+    "title": "Compare two files",
+    "summary": "Show what changed between two files line by line.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "compare",
+      "difference",
+      "diff",
+      "changes"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Compare two files",
+        "cmd": "diff a.txt b.txt"
+      },
+      {
+        "label": "Unified diff",
+        "cmd": "diff -u a.txt b.txt"
+      }
+    ],
+    "flags": [
+      {
+        "flag": "-u",
+        "meaning": "Unified format"
+      }
+    ],
+    "related": [
+      "git-diff",
+      "vimdiff"
+    ],
+    "man": "diff",
+    "starter": false
+  },
+  {
+    "id": "chmod",
+    "command": "chmod",
+    "title": "Change file permissions",
+    "summary": "Set who can read, write, or execute a file.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "permissions",
+      "chmod",
+      "access",
+      "executable",
+      "security"
+    ],
+    "danger": "medium",
+    "examples": [
+      {
+        "label": "Make a script executable",
+        "cmd": "chmod +x script.sh"
+      },
+      {
+        "label": "Owner read/write, others read",
+        "cmd": "chmod 644 file.txt"
+      },
+      {
+        "label": "Private file",
+        "cmd": "chmod 600 secret.key"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "chown",
+      "ls"
+    ],
+    "man": "chmod",
+    "starter": true
+  },
+  {
+    "id": "chown",
+    "command": "chown",
+    "title": "Change file owner",
+    "summary": "Change which user (and group) owns a file or directory.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "owner",
+      "ownership",
+      "user",
+      "group"
+    ],
+    "danger": "medium",
+    "examples": [
+      {
+        "label": "Take ownership",
+        "cmd": "sudo chown $USER file.txt"
+      },
+      {
+        "label": "Recursive ownership",
+        "cmd": "sudo chown -R $USER:$USER folder/"
+      }
+    ],
+    "flags": [
+      {
+        "flag": "-R",
+        "meaning": "Recursive"
+      }
+    ],
+    "related": [
+      "chmod",
+      "ls"
+    ],
+    "man": "chown",
+    "starter": false
+  },
+  {
+    "id": "sudo",
+    "command": "sudo",
+    "title": "Run as administrator",
+    "summary": "Run one command with elevated privileges after authenticating.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "admin",
+      "root",
+      "privilege",
+      "elevated",
+      "superuser"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Run a command as root",
+        "cmd": "sudo pacman -Syu"
+      },
+      {
+        "label": "Edit a system file",
+        "cmd": "sudo -e /etc/hosts"
+      }
+    ],
+    "flags": [
+      {
+        "flag": "-e",
+        "meaning": "Edit a file as root with your editor"
+      }
+    ],
+    "related": [
+      "su",
+      "pkexec"
+    ],
+    "man": "sudo",
+    "starter": true
+  },
+  {
+    "id": "su",
+    "command": "su",
+    "title": "Switch user",
+    "summary": "Start a shell as another user (often root).",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "root",
+      "switch",
+      "user",
+      "login"
+    ],
+    "danger": "medium",
+    "examples": [
+      {
+        "label": "Root shell",
+        "cmd": "su -"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "sudo"
+    ],
+    "man": "su",
+    "starter": false
+  },
+  {
+    "id": "whoami",
+    "command": "whoami",
+    "title": "Show your username",
+    "summary": "Print the current user name.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "user",
+      "username",
+      "who",
+      "identity"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Current user",
+        "cmd": "whoami"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "id",
+      "users"
+    ],
+    "man": "whoami",
+    "starter": false
+  },
+  {
+    "id": "id",
+    "command": "id",
+    "title": "Show user and group ids",
+    "summary": "Print your uid, gid, and group memberships.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "user",
+      "groups",
+      "uid",
+      "gid",
+      "identity"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "My ids and groups",
+        "cmd": "id"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "whoami",
+      "groups"
+    ],
+    "man": "id",
+    "starter": false
+  },
+  {
+    "id": "passwd",
+    "command": "passwd",
+    "title": "Change your password",
+    "summary": "Set a new login password for your user.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "password",
+      "change",
+      "security",
+      "login"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Change my password",
+        "cmd": "passwd"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "chpasswd"
+    ],
+    "man": "passwd",
+    "starter": false
+  },
+  {
+    "id": "ps",
+    "command": "ps",
+    "title": "List processes",
+    "summary": "Show running processes. Often combined with grep.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "process",
+      "running",
+      "tasks",
+      "pid",
+      "list"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "My processes",
+        "cmd": "ps"
+      },
+      {
+        "label": "All processes, readable",
+        "cmd": "ps aux"
+      },
+      {
+        "label": "Find a process by name",
+        "cmd": "ps aux | grep firefox"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "top",
+      "btop",
+      "pgrep",
+      "kill"
+    ],
+    "man": "ps",
+    "starter": true
+  },
+  {
+    "id": "pgrep",
+    "command": "pgrep",
+    "title": "Find a process id",
+    "summary": "Look up PIDs by process name.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "process",
+      "pid",
+      "find",
+      "name"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "PIDs for firefox",
+        "cmd": "pgrep firefox"
+      },
+      {
+        "label": "Full command line match",
+        "cmd": "pgrep -af python"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "ps",
+      "pkill",
+      "kill"
+    ],
+    "man": "pgrep",
+    "starter": false
+  },
+  {
+    "id": "kill",
+    "command": "kill",
+    "title": "Stop a process",
+    "summary": "Send a signal to a process (default: terminate).",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "kill",
+      "stop",
+      "process",
+      "terminate",
+      "pid"
+    ],
+    "danger": "medium",
+    "examples": [
+      {
+        "label": "Terminate by PID",
+        "cmd": "kill 1234"
+      },
+      {
+        "label": "Force kill",
+        "cmd": "kill -9 1234"
+      }
+    ],
+    "flags": [
+      {
+        "flag": "-9",
+        "meaning": "SIGKILL — force quit (last resort)"
+      }
+    ],
+    "related": [
+      "killall",
+      "pkill",
+      "ps"
+    ],
+    "man": "kill",
+    "starter": false
+  },
+  {
+    "id": "killall",
+    "command": "killall",
+    "title": "Stop processes by name",
+    "summary": "Kill every process with a given name.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "kill",
+      "stop",
+      "process",
+      "name"
+    ],
+    "danger": "medium",
+    "examples": [
+      {
+        "label": "Stop all firefox processes",
+        "cmd": "killall firefox"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "kill",
+      "pkill"
+    ],
+    "man": "killall",
+    "starter": false
+  },
+  {
+    "id": "pkill",
+    "command": "pkill",
+    "title": "Kill by name pattern",
+    "summary": "Like killall, with richer matching options.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "kill",
+      "process",
+      "pattern",
+      "name"
+    ],
+    "danger": "medium",
+    "examples": [
+      {
+        "label": "Kill by name",
+        "cmd": "pkill firefox"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "pgrep",
+      "kill"
+    ],
+    "man": "pkill",
+    "starter": false
+  },
+  {
+    "id": "top",
+    "command": "top",
+    "title": "Live process monitor",
+    "summary": "Interactive view of CPU and memory use. q quits.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "monitor",
+      "cpu",
+      "memory",
+      "processes",
+      "live"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Open top",
+        "cmd": "top"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "btop",
+      "htop",
+      "ps"
+    ],
+    "man": "top",
+    "starter": false
+  },
+  {
+    "id": "btop",
+    "command": "btop",
+    "title": "Beautiful system monitor",
+    "summary": "A modern full-screen monitor for CPU, memory, disks, and network.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "monitor",
+      "cpu",
+      "memory",
+      "system",
+      "btop",
+      "htop"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Open btop",
+        "cmd": "btop"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "top",
+      "htop"
+    ],
+    "man": null,
+    "starter": true
+  },
+  {
+    "id": "htop",
+    "command": "htop",
+    "title": "Interactive process monitor",
+    "summary": "A friendlier top with a mouse-friendly interface.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "monitor",
+      "cpu",
+      "memory",
+      "processes"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Open htop",
+        "cmd": "htop"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "btop",
+      "top"
+    ],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "nice",
+    "command": "nice",
+    "title": "Start with CPU priority",
+    "summary": "Launch a command with a nicer (lower) CPU priority.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "priority",
+      "cpu",
+      "nice",
+      "background"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Low priority backup",
+        "cmd": "nice -n 19 tar czf backup.tar.gz folder/"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "renice"
+    ],
+    "man": "nice",
+    "starter": false
+  },
+  {
+    "id": "time",
+    "command": "time",
+    "title": "Time a command",
+    "summary": "Measure how long a command takes to run.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "benchmark",
+      "duration",
+      "speed",
+      "timing"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Time a command",
+        "cmd": "time ls -R /usr"
+      }
+    ],
+    "flags": [],
+    "related": [],
+    "man": "time",
+    "starter": false
+  },
+  {
+    "id": "sleep",
+    "command": "sleep",
+    "title": "Wait a few seconds",
+    "summary": "Pause for a number of seconds — useful in scripts.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "wait",
+      "delay",
+      "pause",
+      "seconds"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Wait 5 seconds",
+        "cmd": "sleep 5"
+      }
+    ],
+    "flags": [],
+    "related": [],
+    "man": "sleep",
+    "starter": false
+  },
+  {
+    "id": "jobs",
+    "command": "jobs",
+    "title": "List background jobs",
+    "summary": "Show jobs started in this shell with & or Ctrl+Z.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "background",
+      "jobs",
+      "shell"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "List jobs",
+        "cmd": "jobs"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "fg",
+      "bg",
+      "nohup"
+    ],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "fg",
+    "command": "fg",
+    "title": "Foreground a job",
+    "summary": "Bring a background job back to the terminal.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "foreground",
+      "jobs",
+      "resume"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Resume latest job",
+        "cmd": "fg"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "bg",
+      "jobs"
+    ],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "bg",
+    "command": "bg",
+    "title": "Background a stopped job",
+    "summary": "Continue a stopped job in the background.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "background",
+      "jobs"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Continue in background",
+        "cmd": "bg"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "fg",
+      "jobs"
+    ],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "nohup",
+    "command": "nohup",
+    "title": "Keep running after logout",
+    "summary": "Run a command that survives closing the terminal.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "background",
+      "detach",
+      "persist",
+      "logout"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Run in background surviving hangup",
+        "cmd": "nohup ./long-job.sh &"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "systemd-run",
+      "tmux"
+    ],
+    "man": "nohup",
+    "starter": false
+  },
+  {
+    "id": "uname",
+    "command": "uname",
+    "title": "Kernel and system name",
+    "summary": "Print operating system and kernel information.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "system",
+      "kernel",
+      "info",
+      "version",
+      "os"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Kernel release",
+        "cmd": "uname -r"
+      },
+      {
+        "label": "All uname fields",
+        "cmd": "uname -a"
+      }
+    ],
+    "flags": [
+      {
+        "flag": "-a",
+        "meaning": "All information"
+      },
+      {
+        "flag": "-r",
+        "meaning": "Kernel release"
+      }
+    ],
+    "related": [
+      "hostnamectl",
+      "fastfetch"
+    ],
+    "man": "uname",
+    "starter": false
+  },
+  {
+    "id": "hostnamectl",
+    "command": "hostnamectl",
+    "title": "Hostname and OS info",
+    "summary": "Show or set the machine hostname and related system identity.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "hostname",
+      "system",
+      "os",
+      "info"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Show system identity",
+        "cmd": "hostnamectl"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "uname",
+      "hostname"
+    ],
+    "man": "hostnamectl",
+    "starter": false
+  },
+  {
+    "id": "hostname",
+    "command": "hostname",
+    "title": "Show computer name",
+    "summary": "Print the machine's hostname.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "hostname",
+      "name",
+      "computer"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Print hostname",
+        "cmd": "hostname"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "hostnamectl"
+    ],
+    "man": "hostname",
+    "starter": false
+  },
+  {
+    "id": "uptime",
+    "command": "uptime",
+    "title": "How long the system has been on",
+    "summary": "Show uptime, load averages, and logged-in users count.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "uptime",
+      "load",
+      "running",
+      "time"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Show uptime",
+        "cmd": "uptime"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "who",
+      "w"
+    ],
+    "man": "uptime",
+    "starter": false
+  },
+  {
+    "id": "free",
+    "command": "free",
+    "title": "Memory usage",
+    "summary": "Show RAM and swap use.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "memory",
+      "ram",
+      "swap",
+      "free",
+      "usage"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Human-readable memory",
+        "cmd": "free -h"
+      }
+    ],
+    "flags": [
+      {
+        "flag": "-h",
+        "meaning": "Human-readable"
+      }
+    ],
+    "related": [
+      "btop",
+      "vmstat"
+    ],
+    "man": "free",
+    "starter": true
+  },
+  {
+    "id": "lscpu",
+    "command": "lscpu",
+    "title": "CPU information",
+    "summary": "Show CPU architecture, cores, and features.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "cpu",
+      "processor",
+      "cores",
+      "hardware",
+      "info"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "CPU details",
+        "cmd": "lscpu"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "lsmem",
+      "inxi"
+    ],
+    "man": "lscpu",
+    "starter": false
+  },
+  {
+    "id": "lsusb",
+    "command": "lsusb",
+    "title": "List USB devices",
+    "summary": "Show connected USB devices.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "usb",
+      "devices",
+      "hardware",
+      "peripherals"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "List USB devices",
+        "cmd": "lsusb"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "lspci",
+      "lsblk"
+    ],
+    "man": "lsusb",
+    "starter": false
+  },
+  {
+    "id": "lspci",
+    "command": "lspci",
+    "title": "List PCI devices",
+    "summary": "Show PCI devices such as GPU and network cards.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "pci",
+      "gpu",
+      "hardware",
+      "devices"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "List PCI devices",
+        "cmd": "lspci"
+      },
+      {
+        "label": "Verbose GPU info",
+        "cmd": "lspci -v | less"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "lsusb",
+      "lshw"
+    ],
+    "man": "lspci",
+    "starter": false
+  },
+  {
+    "id": "dmesg",
+    "command": "dmesg",
+    "title": "Kernel messages",
+    "summary": "Show kernel ring buffer messages — useful for hardware and boot issues.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "kernel",
+      "log",
+      "boot",
+      "hardware",
+      "errors"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Recent kernel messages",
+        "cmd": "dmesg -T | tail"
+      },
+      {
+        "label": "Follow kernel messages",
+        "cmd": "sudo dmesg -w"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "journalctl"
+    ],
+    "man": "dmesg",
+    "starter": false
+  },
+  {
+    "id": "fastfetch",
+    "command": "fastfetch",
+    "title": "Pretty system summary",
+    "summary": "Print a neat overview of your OS, hardware, and shell.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "neofetch",
+      "system",
+      "info",
+      "summary",
+      "fetch"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Show system summary",
+        "cmd": "fastfetch"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "uname",
+      "hostnamectl"
+    ],
+    "man": null,
+    "starter": true
+  },
+  {
+    "id": "date",
+    "command": "date",
+    "title": "Show date and time",
+    "summary": "Print or format the current date and time.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "date",
+      "time",
+      "clock",
+      "today"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Current date and time",
+        "cmd": "date"
+      },
+      {
+        "label": "ISO date",
+        "cmd": "date -Iseconds"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "timedatectl"
+    ],
+    "man": "date",
+    "starter": false
+  },
+  {
+    "id": "timedatectl",
+    "command": "timedatectl",
+    "title": "Timezone and clock sync",
+    "summary": "View or change timezone and NTP synchronization (systemd).",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "timezone",
+      "ntp",
+      "clock",
+      "time",
+      "sync"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Show time settings",
+        "cmd": "timedatectl"
+      },
+      {
+        "label": "List timezones",
+        "cmd": "timedatectl list-timezones | less"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "date"
+    ],
+    "man": "timedatectl",
+    "starter": false
+  },
+  {
+    "id": "cal",
+    "command": "cal",
+    "title": "Calendar",
+    "summary": "Print a calendar for this month (or another month/year).",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "calendar",
+      "month",
+      "date"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "This month",
+        "cmd": "cal"
+      },
+      {
+        "label": "Whole year",
+        "cmd": "cal 2026"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "date"
+    ],
+    "man": "cal",
+    "starter": false
+  },
+  {
+    "id": "env",
+    "command": "env",
+    "title": "Show environment variables",
+    "summary": "Print the environment, or run a command with a modified one.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "environment",
+      "variables",
+      "env",
+      "path"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "List environment",
+        "cmd": "env"
+      },
+      {
+        "label": "Show PATH",
+        "cmd": "echo $PATH"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "printenv",
+      "export"
+    ],
+    "man": "env",
+    "starter": false
+  },
+  {
+    "id": "printenv",
+    "command": "printenv",
+    "title": "Print one environment variable",
+    "summary": "Show the value of a specific variable.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "environment",
+      "variable",
+      "print"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Print HOME",
+        "cmd": "printenv HOME"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "env"
+    ],
+    "man": "printenv",
+    "starter": false
+  },
+  {
+    "id": "which",
+    "command": "which",
+    "title": "Where is a command",
+    "summary": "Show the path of an executable that would run.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "path",
+      "location",
+      "command",
+      "binary",
+      "where"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Locate a command",
+        "cmd": "which python"
+      },
+      {
+        "label": "All matches on PATH",
+        "cmd": "which -a python"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "type",
+      "command",
+      "whereis"
+    ],
+    "man": "which",
+    "starter": false
+  },
+  {
+    "id": "type",
+    "command": "type",
+    "title": "How the shell finds a command",
+    "summary": "Tell whether a name is an alias, function, builtin, or file.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "alias",
+      "builtin",
+      "command",
+      "shell"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "What is ls?",
+        "cmd": "type ls"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "which",
+      "command"
+    ],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "history",
+    "command": "history",
+    "title": "Shell command history",
+    "summary": "Show previously typed commands. Often searchable with Ctrl+R.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "history",
+      "previous",
+      "commands",
+      "recall"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Show history",
+        "cmd": "history"
+      },
+      {
+        "label": "Last 20 commands",
+        "cmd": "history 20"
+      }
+    ],
+    "flags": [],
+    "related": [],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "clear",
+    "command": "clear",
+    "title": "Clear the terminal",
+    "summary": "Wipe the visible terminal screen.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "clear",
+      "screen",
+      "clean",
+      "cls"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Clear the screen",
+        "cmd": "clear"
+      }
+    ],
+    "flags": [],
+    "related": [],
+    "man": "clear",
+    "starter": false
+  },
+  {
+    "id": "man",
+    "command": "man",
+    "title": "Read the manual",
+    "summary": "Open the manual page for a command. q quits.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "help",
+      "manual",
+      "docs",
+      "documentation",
+      "man"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Manual for ls",
+        "cmd": "man ls"
+      },
+      {
+        "label": "Search man pages",
+        "cmd": "man -k copy"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "tldr",
+      "--help"
+    ],
+    "man": "man",
+    "starter": true
+  },
+  {
+    "id": "tldr",
+    "command": "tldr",
+    "title": "Short practical examples",
+    "summary": "Community examples for common commands — faster than a full man page.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "help",
+      "examples",
+      "docs",
+      "cheatsheet"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Examples for tar",
+        "cmd": "tldr tar"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "man"
+    ],
+    "man": null,
+    "starter": true
+  },
+  {
+    "id": "help",
+    "command": "help",
+    "title": "Shell builtin help",
+    "summary": "Help for shell builtins (cd, export, …) in bash/zsh.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "help",
+      "builtin",
+      "shell"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Help for cd",
+        "cmd": "help cd"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "man"
+    ],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "ip-addr",
+    "command": "ip addr",
+    "title": "Show my IP addresses",
+    "summary": "List network interfaces and their IPv4/IPv6 addresses.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "ip",
+      "address",
+      "network",
+      "show",
+      "interfaces",
+      "wifi",
+      "ethernet"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Show all addresses",
+        "cmd": "ip addr"
+      },
+      {
+        "label": "Brief interface summary",
+        "cmd": "ip -br addr"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "ip-route",
+      "hostname",
+      "curl-ip"
+    ],
+    "man": "ip",
+    "starter": true
+  },
+  {
+    "id": "ip-route",
+    "command": "ip route",
+    "title": "Show routing table",
+    "summary": "See how packets leave your machine (default gateway, etc.).",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "route",
+      "gateway",
+      "network",
+      "routing"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Show routes",
+        "cmd": "ip route"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "ip-addr",
+      "ping"
+    ],
+    "man": "ip",
+    "starter": false
+  },
+  {
+    "id": "ip-link",
+    "command": "ip link",
+    "title": "Show network interfaces",
+    "summary": "List interfaces and whether they are up or down.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "interfaces",
+      "link",
+      "network",
+      "up",
+      "down"
+    ],
+    "danger": "medium",
+    "examples": [
+      {
+        "label": "List interfaces",
+        "cmd": "ip link"
+      },
+      {
+        "label": "Bring an interface up",
+        "cmd": "sudo ip link set wlan0 up"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "ip-addr"
+    ],
+    "man": "ip",
+    "starter": false
+  },
+  {
+    "id": "ping",
+    "command": "ping",
+    "title": "Test network reachability",
+    "summary": "Send ICMP probes to a host to check connectivity and latency.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "ping",
+      "network",
+      "online",
+      "latency",
+      "test",
+      "internet"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Ping a site",
+        "cmd": "ping -c 4 archlinux.org"
+      },
+      {
+        "label": "Ping a local gateway",
+        "cmd": "ping 192.168.1.1"
+      }
+    ],
+    "flags": [
+      {
+        "flag": "-c",
+        "meaning": "Stop after this many probes"
+      }
+    ],
+    "related": [
+      "traceroute",
+      "curl"
+    ],
+    "man": "ping",
+    "starter": true
+  },
+  {
+    "id": "curl",
+    "command": "curl",
+    "title": "Fetch a URL",
+    "summary": "Download or call HTTP APIs from the terminal.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "download",
+      "http",
+      "url",
+      "api",
+      "fetch",
+      "web"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Download a file",
+        "cmd": "curl -LO https://example.com/file.zip"
+      },
+      {
+        "label": "Show headers",
+        "cmd": "curl -I https://omarchy.org"
+      },
+      {
+        "label": "POST JSON",
+        "cmd": "curl -X POST -H 'Content-Type: application/json' -d '{\"a\":1}' https://httpbin.org/post"
+      }
+    ],
+    "flags": [
+      {
+        "flag": "-L",
+        "meaning": "Follow redirects"
+      },
+      {
+        "flag": "-O",
+        "meaning": "Save with remote file name"
+      },
+      {
+        "flag": "-I",
+        "meaning": "Headers only"
+      }
+    ],
+    "related": [
+      "wget",
+      "http"
+    ],
+    "man": "curl",
+    "starter": true
+  },
+  {
+    "id": "curl-ip",
+    "command": "curl ifconfig.me",
+    "title": "Show public IP",
+    "summary": "Ask an external service what public IP the internet sees for you.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "public",
+      "ip",
+      "external",
+      "wan",
+      "show",
+      "my"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Print public IP",
+        "cmd": "curl -s ifconfig.me"
+      },
+      {
+        "label": "Alternative service",
+        "cmd": "curl -s https://ipinfo.io/ip"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "ip-addr"
+    ],
+    "man": null,
+    "starter": true
+  },
+  {
+    "id": "wget",
+    "command": "wget",
+    "title": "Download files",
+    "summary": "Download files over HTTP/HTTPS/FTP with resume support.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "download",
+      "http",
+      "file",
+      "fetch"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Download a file",
+        "cmd": "wget https://example.com/file.zip"
+      },
+      {
+        "label": "Continue a partial download",
+        "cmd": "wget -c https://example.com/file.zip"
+      }
+    ],
+    "flags": [
+      {
+        "flag": "-c",
+        "meaning": "Continue / resume"
+      }
+    ],
+    "related": [
+      "curl"
+    ],
+    "man": "wget",
+    "starter": false
+  },
+  {
+    "id": "ss",
+    "command": "ss",
+    "title": "Show open sockets",
+    "summary": "Modern replacement for netstat — see listening ports and connections.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "ports",
+      "listening",
+      "network",
+      "sockets",
+      "netstat"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Listening TCP ports",
+        "cmd": "ss -tulpn"
+      },
+      {
+        "label": "Established connections",
+        "cmd": "ss -tp"
+      }
+    ],
+    "flags": [
+      {
+        "flag": "-t",
+        "meaning": "TCP"
+      },
+      {
+        "flag": "-u",
+        "meaning": "UDP"
+      },
+      {
+        "flag": "-l",
+        "meaning": "Listening"
+      },
+      {
+        "flag": "-n",
+        "meaning": "Numeric, no DNS"
+      }
+    ],
+    "related": [
+      "lsof",
+      "nmap"
+    ],
+    "man": "ss",
+    "starter": false
+  },
+  {
+    "id": "nmap",
+    "command": "nmap",
+    "title": "Scan network ports",
+    "summary": "Discover hosts and open ports on a network. Use only on networks you own.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "scan",
+      "ports",
+      "network",
+      "security"
+    ],
+    "danger": "medium",
+    "examples": [
+      {
+        "label": "Scan local host ports",
+        "cmd": "nmap localhost"
+      },
+      {
+        "label": "Quick scan of a host",
+        "cmd": "nmap -F 192.168.1.10"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "ss",
+      "ping"
+    ],
+    "man": "nmap",
+    "starter": false
+  },
+  {
+    "id": "traceroute",
+    "command": "traceroute",
+    "title": "Trace the network path",
+    "summary": "Show each hop packets take to a destination.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "route",
+      "path",
+      "hops",
+      "network",
+      "debug"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Trace a host",
+        "cmd": "traceroute archlinux.org"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "ping",
+      "mtr"
+    ],
+    "man": "traceroute",
+    "starter": false
+  },
+  {
+    "id": "dig",
+    "command": "dig",
+    "title": "DNS lookup",
+    "summary": "Query DNS for records (A, MX, …).",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "dns",
+      "lookup",
+      "domain",
+      "resolve"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Look up a domain",
+        "cmd": "dig omarchy.org"
+      },
+      {
+        "label": "Short answer",
+        "cmd": "dig +short omarchy.org"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "nslookup",
+      "host"
+    ],
+    "man": "dig",
+    "starter": false
+  },
+  {
+    "id": "host",
+    "command": "host",
+    "title": "Simple DNS lookup",
+    "summary": "Quick DNS resolution for a hostname.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "dns",
+      "lookup",
+      "hostname"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Resolve a host",
+        "cmd": "host omarchy.org"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "dig"
+    ],
+    "man": "host",
+    "starter": false
+  },
+  {
+    "id": "nmcli",
+    "command": "nmcli",
+    "title": "NetworkManager CLI",
+    "summary": "Control Wi‑Fi and connections from the terminal.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "wifi",
+      "network",
+      "wireless",
+      "connection",
+      "networkmanager"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "List Wi‑Fi networks",
+        "cmd": "nmcli device wifi list"
+      },
+      {
+        "label": "Connect to Wi‑Fi",
+        "cmd": "nmcli device wifi connect 'SSID' password 'secret'"
+      },
+      {
+        "label": "Connection status",
+        "cmd": "nmcli general status"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "ip-addr",
+      "nmtui"
+    ],
+    "man": "nmcli",
+    "starter": true
+  },
+  {
+    "id": "nmtui",
+    "command": "nmtui",
+    "title": "NetworkManager text UI",
+    "summary": "A simple menu for Wi‑Fi and connections.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "wifi",
+      "network",
+      "tui",
+      "connection"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Open NetworkManager TUI",
+        "cmd": "nmtui"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "nmcli"
+    ],
+    "man": "nmtui",
+    "starter": false
+  },
+  {
+    "id": "scp",
+    "command": "scp",
+    "title": "Copy files over SSH",
+    "summary": "Securely copy files to or from another machine.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "copy",
+      "ssh",
+      "remote",
+      "transfer",
+      "upload",
+      "download"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Copy to a server",
+        "cmd": "scp file.txt user@host:~/"
+      },
+      {
+        "label": "Copy a folder from a server",
+        "cmd": "scp -r user@host:~/project ./"
+      }
+    ],
+    "flags": [
+      {
+        "flag": "-r",
+        "meaning": "Recursive"
+      }
+    ],
+    "related": [
+      "rsync",
+      "sftp",
+      "ssh"
+    ],
+    "man": "scp",
+    "starter": false
+  },
+  {
+    "id": "rsync",
+    "command": "rsync",
+    "title": "Sync files efficiently",
+    "summary": "Copy and sync directories locally or over SSH, transferring only changes.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "sync",
+      "copy",
+      "backup",
+      "remote",
+      "transfer"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Sync a folder to a backup",
+        "cmd": "rsync -avh project/ project-backup/"
+      },
+      {
+        "label": "Sync over SSH",
+        "cmd": "rsync -avh -e ssh project/ user@host:~/project/"
+      }
+    ],
+    "flags": [
+      {
+        "flag": "-a",
+        "meaning": "Archive mode (permissions, times)"
+      },
+      {
+        "flag": "-v",
+        "meaning": "Verbose"
+      },
+      {
+        "flag": "-h",
+        "meaning": "Human-readable"
+      },
+      {
+        "flag": "--delete",
+        "meaning": "Remove extras in destination (careful)"
+      }
+    ],
+    "related": [
+      "scp",
+      "cp"
+    ],
+    "man": "rsync",
+    "starter": true
+  },
+  {
+    "id": "ssh",
+    "command": "ssh",
+    "title": "Remote shell",
+    "summary": "Log into another machine securely and run commands there.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "remote",
+      "login",
+      "shell",
+      "server",
+      "secure"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Connect to a host",
+        "cmd": "ssh user@host"
+      },
+      {
+        "label": "Specific identity key",
+        "cmd": "ssh -i ~/.ssh/id_ed25519 user@host"
+      }
+    ],
+    "flags": [
+      {
+        "flag": "-i",
+        "meaning": "Identity (private key) file"
+      }
+    ],
+    "related": [
+      "scp",
+      "rsync",
+      "ssh-keygen"
+    ],
+    "man": "ssh",
+    "starter": true
+  },
+  {
+    "id": "ssh-keygen",
+    "command": "ssh-keygen",
+    "title": "Create SSH keys",
+    "summary": "Generate a public/private key pair for passwordless SSH.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "ssh",
+      "key",
+      "generate",
+      "authentication",
+      "security"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Create an ed25519 key",
+        "cmd": "ssh-keygen -t ed25519 -C 'me@example.com'"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "ssh",
+      "ssh-copy-id"
+    ],
+    "man": "ssh-keygen",
+    "starter": false
+  },
+  {
+    "id": "ssh-copy-id",
+    "command": "ssh-copy-id",
+    "title": "Install your SSH public key",
+    "summary": "Copy your public key to a server's authorized_keys.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "ssh",
+      "key",
+      "authorize",
+      "passwordless"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Install key on a server",
+        "cmd": "ssh-copy-id user@host"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "ssh",
+      "ssh-keygen"
+    ],
+    "man": "ssh-copy-id",
+    "starter": false
+  },
+  {
+    "id": "tar",
+    "command": "tar",
+    "title": "Create or extract archives",
+    "summary": "Bundle files into a .tar archive, often compressed with gzip/xz.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "archive",
+      "compress",
+      "tar",
+      "gzip",
+      "extract",
+      "zip",
+      "backup"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Create a gzip archive",
+        "cmd": "tar -czf project.tar.gz project/"
+      },
+      {
+        "label": "Extract an archive",
+        "cmd": "tar -xzf project.tar.gz"
+      },
+      {
+        "label": "List contents",
+        "cmd": "tar -tzf project.tar.gz"
+      }
+    ],
+    "flags": [
+      {
+        "flag": "-c",
+        "meaning": "Create"
+      },
+      {
+        "flag": "-x",
+        "meaning": "Extract"
+      },
+      {
+        "flag": "-z",
+        "meaning": "gzip"
+      },
+      {
+        "flag": "-f",
+        "meaning": "Archive file name"
+      },
+      {
+        "flag": "-t",
+        "meaning": "List"
+      }
+    ],
+    "related": [
+      "zip",
+      "unzip",
+      "zstd"
+    ],
+    "man": "tar",
+    "starter": true
+  },
+  {
+    "id": "zip",
+    "command": "zip",
+    "title": "Create a zip file",
+    "summary": "Compress files into a .zip archive (handy for sharing with other OSes).",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "zip",
+      "compress",
+      "archive"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Zip a folder",
+        "cmd": "zip -r project.zip project/"
+      }
+    ],
+    "flags": [
+      {
+        "flag": "-r",
+        "meaning": "Recursive"
+      }
+    ],
+    "related": [
+      "unzip",
+      "tar"
+    ],
+    "man": "zip",
+    "starter": false
+  },
+  {
+    "id": "unzip",
+    "command": "unzip",
+    "title": "Extract a zip file",
+    "summary": "Unpack a .zip archive.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "unzip",
+      "extract",
+      "decompress",
+      "archive"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Extract here",
+        "cmd": "unzip project.zip"
+      },
+      {
+        "label": "List contents",
+        "cmd": "unzip -l project.zip"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "zip",
+      "tar"
+    ],
+    "man": "unzip",
+    "starter": false
+  },
+  {
+    "id": "gzip",
+    "command": "gzip",
+    "title": "Compress a file with gzip",
+    "summary": "Compress a single file to .gz (replaces the original by default).",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "compress",
+      "gzip",
+      "gz"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Compress a file",
+        "cmd": "gzip big.log"
+      },
+      {
+        "label": "Keep original",
+        "cmd": "gzip -k big.log"
+      }
+    ],
+    "flags": [
+      {
+        "flag": "-k",
+        "meaning": "Keep the original file"
+      },
+      {
+        "flag": "-d",
+        "meaning": "Decompress"
+      }
+    ],
+    "related": [
+      "gunzip",
+      "tar"
+    ],
+    "man": "gzip",
+    "starter": false
+  },
+  {
+    "id": "zstd",
+    "command": "zstd",
+    "title": "Fast modern compression",
+    "summary": "Compress or decompress with Zstandard — fast and effective.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "compress",
+      "zstd",
+      "archive"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Compress a file",
+        "cmd": "zstd file.bin"
+      },
+      {
+        "label": "Decompress",
+        "cmd": "zstd -d file.bin.zst"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "tar",
+      "gzip"
+    ],
+    "man": "zstd",
+    "starter": false
+  },
+  {
+    "id": "systemctl-status",
+    "command": "systemctl status",
+    "title": "Check a service status",
+    "summary": "Show whether a systemd service is running and recent logs.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "service",
+      "systemd",
+      "status",
+      "running",
+      "daemon"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Status of NetworkManager",
+        "cmd": "systemctl status NetworkManager"
+      },
+      {
+        "label": "Status of a user service",
+        "cmd": "systemctl --user status pipewire"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "systemctl-start",
+      "journalctl"
+    ],
+    "man": "systemctl",
+    "starter": true
+  },
+  {
+    "id": "systemctl-start",
+    "command": "systemctl start",
+    "title": "Start a service",
+    "summary": "Start a systemd service now (until reboot unless enabled).",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "service",
+      "start",
+      "systemd"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Start a service",
+        "cmd": "sudo systemctl start bluetooth.service"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "systemctl-stop",
+      "systemctl-enable"
+    ],
+    "man": "systemctl",
+    "starter": false
+  },
+  {
+    "id": "systemctl-stop",
+    "command": "systemctl stop",
+    "title": "Stop a service",
+    "summary": "Stop a running systemd service.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "service",
+      "stop",
+      "systemd"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Stop a service",
+        "cmd": "sudo systemctl stop bluetooth.service"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "systemctl-start",
+      "systemctl-restart"
+    ],
+    "man": "systemctl",
+    "starter": false
+  },
+  {
+    "id": "systemctl-restart",
+    "command": "systemctl restart",
+    "title": "Restart a service",
+    "summary": "Stop then start a systemd service.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "service",
+      "restart",
+      "systemd",
+      "reload"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Restart a service",
+        "cmd": "sudo systemctl restart NetworkManager"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "systemctl-status"
+    ],
+    "man": "systemctl",
+    "starter": false
+  },
+  {
+    "id": "systemctl-enable",
+    "command": "systemctl enable",
+    "title": "Start a service at boot",
+    "summary": "Enable a service so it starts automatically on boot.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "service",
+      "enable",
+      "boot",
+      "autostart",
+      "systemd"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Enable and start now",
+        "cmd": "sudo systemctl enable --now docker.service"
+      }
+    ],
+    "flags": [
+      {
+        "flag": "--now",
+        "meaning": "Also start immediately"
+      }
+    ],
+    "related": [
+      "systemctl-disable"
+    ],
+    "man": "systemctl",
+    "starter": false
+  },
+  {
+    "id": "systemctl-disable",
+    "command": "systemctl disable",
+    "title": "Do not start at boot",
+    "summary": "Disable a service from starting automatically.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "service",
+      "disable",
+      "boot",
+      "systemd"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Disable a service",
+        "cmd": "sudo systemctl disable docker.service"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "systemctl-enable"
+    ],
+    "man": "systemctl",
+    "starter": false
+  },
+  {
+    "id": "journalctl",
+    "command": "journalctl",
+    "title": "Read system logs",
+    "summary": "Query the systemd journal for service and boot logs.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "logs",
+      "journal",
+      "systemd",
+      "errors",
+      "debug"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Logs for a service",
+        "cmd": "journalctl -u NetworkManager -b"
+      },
+      {
+        "label": "Follow logs live",
+        "cmd": "journalctl -f"
+      },
+      {
+        "label": "Priority errors and worse",
+        "cmd": "journalctl -p err -b"
+      }
+    ],
+    "flags": [
+      {
+        "flag": "-u",
+        "meaning": "Unit / service name"
+      },
+      {
+        "flag": "-b",
+        "meaning": "This boot only"
+      },
+      {
+        "flag": "-f",
+        "meaning": "Follow"
+      },
+      {
+        "flag": "-p",
+        "meaning": "Priority filter"
+      }
+    ],
+    "related": [
+      "systemctl-status",
+      "dmesg"
+    ],
+    "man": "journalctl",
+    "starter": true
+  },
+  {
+    "id": "loginctl",
+    "command": "loginctl",
+    "title": "User sessions",
+    "summary": "List and control login sessions (lock, terminate).",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "session",
+      "login",
+      "lock",
+      "users"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "List sessions",
+        "cmd": "loginctl"
+      },
+      {
+        "label": "Lock the session",
+        "cmd": "loginctl lock-session"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "systemctl"
+    ],
+    "man": "loginctl",
+    "starter": false
+  },
+  {
+    "id": "useradd",
+    "command": "useradd",
+    "title": "Create a user account",
+    "summary": "Add a new system user (usually via a higher-level tool on desktops).",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "user",
+      "account",
+      "create",
+      "add"
+    ],
+    "danger": "medium",
+    "examples": [
+      {
+        "label": "Create a user with home",
+        "cmd": "sudo useradd -m alice"
+      }
+    ],
+    "flags": [
+      {
+        "flag": "-m",
+        "meaning": "Create home directory"
+      }
+    ],
+    "related": [
+      "passwd",
+      "userdel"
+    ],
+    "man": "useradd",
+    "starter": false
+  },
+  {
+    "id": "usermod",
+    "command": "usermod",
+    "title": "Modify a user",
+    "summary": "Change groups, shell, or other account settings.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "user",
+      "groups",
+      "modify"
+    ],
+    "danger": "medium",
+    "examples": [
+      {
+        "label": "Add user to a group",
+        "cmd": "sudo usermod -aG wheel alice"
+      }
+    ],
+    "flags": [
+      {
+        "flag": "-aG",
+        "meaning": "Append supplementary groups"
+      }
+    ],
+    "related": [
+      "groups",
+      "gpasswd"
+    ],
+    "man": "usermod",
+    "starter": false
+  },
+  {
+    "id": "groups",
+    "command": "groups",
+    "title": "Show group membership",
+    "summary": "List the groups a user belongs to.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "groups",
+      "permissions",
+      "membership"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "My groups",
+        "cmd": "groups"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "id",
+      "usermod"
+    ],
+    "man": "groups",
+    "starter": false
+  },
+  {
+    "id": "nano",
+    "command": "nano",
+    "title": "Simple text editor",
+    "summary": "An easy terminal editor. Ctrl+O saves, Ctrl+X exits.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "edit",
+      "editor",
+      "text",
+      "nano"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Edit a file",
+        "cmd": "nano notes.txt"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "vim",
+      "nvim"
+    ],
+    "man": "nano",
+    "starter": true
+  },
+  {
+    "id": "nvim",
+    "command": "nvim",
+    "title": "Neovim editor",
+    "summary": "A modern Vim-compatible editor popular on Omarchy.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "edit",
+      "editor",
+      "vim",
+      "neovim",
+      "text"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Edit a file",
+        "cmd": "nvim notes.txt"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "vim",
+      "nano"
+    ],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "vim",
+    "command": "vim",
+    "title": "Vim editor",
+    "summary": "Modal text editor. Press i to insert, Esc then :wq to save and quit.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "edit",
+      "editor",
+      "vim",
+      "text"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Edit a file",
+        "cmd": "vim notes.txt"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "nvim",
+      "nano"
+    ],
+    "man": "vim",
+    "starter": false
+  },
+  {
+    "id": "alias",
+    "command": "alias",
+    "title": "Create a command shortcut",
+    "summary": "Define a short name for a longer command in your shell.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "alias",
+      "shortcut",
+      "shell"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "List aliases",
+        "cmd": "alias"
+      },
+      {
+        "label": "Create a temporary alias",
+        "cmd": "alias ll='ls -lah'"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "unalias"
+    ],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "export",
+    "command": "export",
+    "title": "Set an environment variable",
+    "summary": "Make a variable available to child processes.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "environment",
+      "variable",
+      "export",
+      "path"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Set a variable",
+        "cmd": "export EDITOR=nvim"
+      },
+      {
+        "label": "Prepend to PATH",
+        "cmd": "export PATH=\"$HOME/bin:$PATH\""
+      }
+    ],
+    "flags": [],
+    "related": [
+      "env",
+      "printenv"
+    ],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "source",
+    "command": "source",
+    "title": "Load a shell file",
+    "summary": "Run a script in the current shell (aliases/functions stick around).",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "source",
+      "reload",
+      "shell",
+      "bashrc"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Reload bash config",
+        "cmd": "source ~/.bashrc"
+      },
+      {
+        "label": "Reload zsh config",
+        "cmd": "source ~/.zshrc"
+      }
+    ],
+    "flags": [],
+    "related": [],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "xargs",
+    "command": "xargs",
+    "title": "Build commands from stdin",
+    "summary": "Turn lines of input into arguments for another command.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "pipe",
+      "batch",
+      "arguments",
+      "stdin"
+    ],
+    "danger": "medium",
+    "examples": [
+      {
+        "label": "Delete files listed by find",
+        "cmd": "find . -name '*.tmp' | xargs rm"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "find",
+      "parallel"
+    ],
+    "man": "xargs",
+    "starter": false
+  },
+  {
+    "id": "awk",
+    "command": "awk",
+    "title": "Pattern scanning language",
+    "summary": "Process text line by line — extract columns, compute, filter.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "text",
+      "columns",
+      "process",
+      "script"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Print second column",
+        "cmd": "awk '{print $2}' file.txt"
+      },
+      {
+        "label": "Sum a column",
+        "cmd": "awk '{s+=$1} END {print s}' nums.txt"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "sed",
+      "cut"
+    ],
+    "man": "awk",
+    "starter": false
+  },
+  {
+    "id": "sed",
+    "command": "sed",
+    "title": "Stream editor",
+    "summary": "Find/replace text in a stream or file.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "replace",
+      "text",
+      "edit",
+      "regex",
+      "substitute"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Replace in a stream",
+        "cmd": "echo hello | sed 's/hello/hi/'"
+      },
+      {
+        "label": "Replace in a file (GNU)",
+        "cmd": "sed -i 's/foo/bar/g' file.txt"
+      }
+    ],
+    "flags": [
+      {
+        "flag": "-i",
+        "meaning": "Edit file in place (GNU sed)"
+      }
+    ],
+    "related": [
+      "awk",
+      "tr"
+    ],
+    "man": "sed",
+    "starter": false
+  },
+  {
+    "id": "git-status",
+    "command": "git status",
+    "title": "Git: what changed",
+    "summary": "Show modified, staged, and untracked files.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "git",
+      "status",
+      "changes",
+      "diff"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Repository status",
+        "cmd": "git status"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "git-diff",
+      "git-add"
+    ],
+    "man": null,
+    "starter": true
+  },
+  {
+    "id": "git-clone",
+    "command": "git clone",
+    "title": "Git: download a repo",
+    "summary": "Copy a remote repository to your machine.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "git",
+      "clone",
+      "download",
+      "repository",
+      "github"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Clone with HTTPS",
+        "cmd": "git clone https://github.com/user/repo.git"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "git-pull"
+    ],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "git-pull",
+    "command": "git pull",
+    "title": "Git: update from remote",
+    "summary": "Fetch and integrate changes from the remote branch.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "git",
+      "pull",
+      "update",
+      "sync",
+      "remote"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Pull latest changes",
+        "cmd": "git pull"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "git-fetch",
+      "git-push"
+    ],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "git-add",
+    "command": "git add",
+    "title": "Git: stage changes",
+    "summary": "Stage files for the next commit.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "git",
+      "stage",
+      "add"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Stage a file",
+        "cmd": "git add file.txt"
+      },
+      {
+        "label": "Stage everything",
+        "cmd": "git add -A"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "git-commit",
+      "git-status"
+    ],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "git-commit",
+    "command": "git commit",
+    "title": "Git: save a snapshot",
+    "summary": "Record staged changes with a message.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "git",
+      "commit",
+      "save",
+      "snapshot"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Commit staged changes",
+        "cmd": "git commit -m 'Explain why'"
+      }
+    ],
+    "flags": [
+      {
+        "flag": "-m",
+        "meaning": "Commit message"
+      }
+    ],
+    "related": [
+      "git-add",
+      "git-push"
+    ],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "git-push",
+    "command": "git push",
+    "title": "Git: upload commits",
+    "summary": "Send local commits to the remote repository.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "git",
+      "push",
+      "upload",
+      "remote"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Push current branch",
+        "cmd": "git push"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "git-pull"
+    ],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "git-diff",
+    "command": "git diff",
+    "title": "Git: show changes",
+    "summary": "Show unstaged (or staged) diffs.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "git",
+      "diff",
+      "changes"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Unstaged changes",
+        "cmd": "git diff"
+      },
+      {
+        "label": "Staged changes",
+        "cmd": "git diff --staged"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "git-status"
+    ],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "git-log",
+    "command": "git log",
+    "title": "Git: commit history",
+    "summary": "Browse previous commits.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "git",
+      "log",
+      "history",
+      "commits"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "One-line history",
+        "cmd": "git log --oneline -20"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "git-status"
+    ],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "git-branch",
+    "command": "git branch",
+    "title": "Git: list branches",
+    "summary": "Show local branches; create or delete with options.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "git",
+      "branch",
+      "list"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "List branches",
+        "cmd": "git branch"
+      },
+      {
+        "label": "Create a branch",
+        "cmd": "git branch feature"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "git-checkout",
+      "git-switch"
+    ],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "git-switch",
+    "command": "git switch",
+    "title": "Git: switch branch",
+    "summary": "Move to another branch (modern alternative to checkout).",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "git",
+      "switch",
+      "checkout",
+      "branch"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Switch branch",
+        "cmd": "git switch main"
+      },
+      {
+        "label": "Create and switch",
+        "cmd": "git switch -c feature"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "git-branch"
+    ],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "pacman-syu",
+    "command": "pacman -Syu",
+    "title": "Update the system",
+    "summary": "Sync databases and upgrade every installed package. The usual Arch update.",
+    "sources": [
+      "arch"
+    ],
+    "tags": [
+      "update",
+      "upgrade",
+      "system",
+      "packages",
+      "pacman"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Full system update",
+        "cmd": "sudo pacman -Syu"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "pacman-S",
+      "checkupdates"
+    ],
+    "man": "pacman",
+    "starter": true
+  },
+  {
+    "id": "pacman-S",
+    "command": "pacman -S",
+    "title": "Install packages",
+    "summary": "Install one or more packages from the official repos.",
+    "sources": [
+      "arch"
+    ],
+    "tags": [
+      "install",
+      "package",
+      "software",
+      "pacman",
+      "add"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Install a package",
+        "cmd": "sudo pacman -S neovim"
+      },
+      {
+        "label": "Install several",
+        "cmd": "sudo pacman -S git base-devel"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "pacman-R",
+      "paru"
+    ],
+    "man": "pacman",
+    "starter": true
+  },
+  {
+    "id": "pacman-R",
+    "command": "pacman -R",
+    "title": "Remove a package",
+    "summary": "Uninstall a package. -Rs also removes unneeded dependencies.",
+    "sources": [
+      "arch"
+    ],
+    "tags": [
+      "remove",
+      "uninstall",
+      "package",
+      "delete",
+      "pacman"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Remove a package",
+        "cmd": "sudo pacman -R package"
+      },
+      {
+        "label": "Remove with unused deps",
+        "cmd": "sudo pacman -Rs package"
+      }
+    ],
+    "flags": [
+      {
+        "flag": "-s",
+        "meaning": "Remove unused dependencies"
+      },
+      {
+        "flag": "-n",
+        "meaning": "Also delete config files (careful)"
+      }
+    ],
+    "related": [
+      "pacman-S"
+    ],
+    "man": "pacman",
+    "starter": false
+  },
+  {
+    "id": "pacman-Ss",
+    "command": "pacman -Ss",
+    "title": "Search packages",
+    "summary": "Search package names and descriptions in the sync databases.",
+    "sources": [
+      "arch"
+    ],
+    "tags": [
+      "search",
+      "package",
+      "find",
+      "pacman"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Search for a package",
+        "cmd": "pacman -Ss neovim"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "pacman-Qi",
+      "paru"
+    ],
+    "man": "pacman",
+    "starter": true
+  },
+  {
+    "id": "pacman-Qi",
+    "command": "pacman -Qi",
+    "title": "Info about an installed package",
+    "summary": "Show version, size, dependencies, and install reason.",
+    "sources": [
+      "arch"
+    ],
+    "tags": [
+      "info",
+      "package",
+      "installed",
+      "details",
+      "pacman"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Package info",
+        "cmd": "pacman -Qi neovim"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "pacman-Ql"
+    ],
+    "man": "pacman",
+    "starter": false
+  },
+  {
+    "id": "pacman-Ql",
+    "command": "pacman -Ql",
+    "title": "List files in a package",
+    "summary": "Show every file owned by an installed package.",
+    "sources": [
+      "arch"
+    ],
+    "tags": [
+      "files",
+      "package",
+      "list",
+      "owned",
+      "pacman"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Files owned by a package",
+        "cmd": "pacman -Ql neovim | less"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "pacman-Qo"
+    ],
+    "man": "pacman",
+    "starter": false
+  },
+  {
+    "id": "pacman-Qo",
+    "command": "pacman -Qo",
+    "title": "Which package owns a file",
+    "summary": "Find the package that owns a given path.",
+    "sources": [
+      "arch"
+    ],
+    "tags": [
+      "owns",
+      "file",
+      "package",
+      "which",
+      "pacman"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Who owns this file?",
+        "cmd": "pacman -Qo /usr/bin/nvim"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "pacman-Ql"
+    ],
+    "man": "pacman",
+    "starter": false
+  },
+  {
+    "id": "pacman-Qe",
+    "command": "pacman -Qe",
+    "title": "Explicitly installed packages",
+    "summary": "List packages you installed on purpose (not as dependencies).",
+    "sources": [
+      "arch"
+    ],
+    "tags": [
+      "list",
+      "installed",
+      "explicit",
+      "packages",
+      "pacman"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "List explicit packages",
+        "cmd": "pacman -Qe"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "pacman-Qdt"
+    ],
+    "man": "pacman",
+    "starter": false
+  },
+  {
+    "id": "pacman-Qdt",
+    "command": "pacman -Qdt",
+    "title": "Orphan packages",
+    "summary": "List packages that were installed as deps and are no longer required.",
+    "sources": [
+      "arch"
+    ],
+    "tags": [
+      "orphans",
+      "cleanup",
+      "unused",
+      "packages",
+      "pacman"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "List orphans",
+        "cmd": "pacman -Qdt"
+      },
+      {
+        "label": "Remove orphans",
+        "cmd": "sudo pacman -Rns $(pacman -Qdtq)"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "pacman-R"
+    ],
+    "man": "pacman",
+    "starter": false
+  },
+  {
+    "id": "pacman-Sc",
+    "command": "pacman -Sc",
+    "title": "Clean package cache",
+    "summary": "Free disk space by removing old cached packages.",
+    "sources": [
+      "arch"
+    ],
+    "tags": [
+      "clean",
+      "cache",
+      "disk",
+      "space",
+      "pacman"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Clean uninstalled packages from cache",
+        "cmd": "sudo pacman -Sc"
+      },
+      {
+        "label": "Wipe the entire cache",
+        "cmd": "sudo pacman -Scc"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "paccache"
+    ],
+    "man": "pacman",
+    "starter": false
+  },
+  {
+    "id": "pacman-Fy",
+    "command": "pacman -Fy",
+    "title": "Refresh file database",
+    "summary": "Download the database used by pacman -F to find remote files.",
+    "sources": [
+      "arch"
+    ],
+    "tags": [
+      "files",
+      "database",
+      "search",
+      "pacman"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Refresh file DB",
+        "cmd": "sudo pacman -Fy"
+      },
+      {
+        "label": "Find which package has a file",
+        "cmd": "pacman -F nvim"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "pacman-Qo"
+    ],
+    "man": "pacman",
+    "starter": false
+  },
+  {
+    "id": "checkupdates",
+    "command": "checkupdates",
+    "title": "List pending updates",
+    "summary": "Show packages that would be upgraded without changing anything.",
+    "sources": [
+      "arch"
+    ],
+    "tags": [
+      "updates",
+      "pending",
+      "packages",
+      "check"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Show available updates",
+        "cmd": "checkupdates"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "pacman-syu"
+    ],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "paccache",
+    "command": "paccache",
+    "title": "Trim pacman cache finely",
+    "summary": "Keep only recent package versions in the cache.",
+    "sources": [
+      "arch"
+    ],
+    "tags": [
+      "cache",
+      "clean",
+      "disk",
+      "pacman"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Keep last 2 versions",
+        "cmd": "sudo paccache -rk2"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "pacman-Sc"
+    ],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "paru",
+    "command": "paru",
+    "title": "AUR helper (paru)",
+    "summary": "Install packages from the official repos and the Arch User Repository.",
+    "sources": [
+      "arch"
+    ],
+    "tags": [
+      "aur",
+      "install",
+      "paru",
+      "yay",
+      "package"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Install from AUR/repos",
+        "cmd": "paru -S package"
+      },
+      {
+        "label": "Update including AUR",
+        "cmd": "paru -Syu"
+      },
+      {
+        "label": "Search",
+        "cmd": "paru -Ss package"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "yay",
+      "pacman-S"
+    ],
+    "man": null,
+    "starter": true
+  },
+  {
+    "id": "yay",
+    "command": "yay",
+    "title": "AUR helper (yay)",
+    "summary": "Another popular AUR helper with a pacman-like interface.",
+    "sources": [
+      "arch"
+    ],
+    "tags": [
+      "aur",
+      "install",
+      "yay",
+      "paru",
+      "package"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Install from AUR/repos",
+        "cmd": "yay -S package"
+      },
+      {
+        "label": "Update including AUR",
+        "cmd": "yay -Syu"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "paru",
+      "pacman-S"
+    ],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "makepkg",
+    "command": "makepkg",
+    "title": "Build a package from a PKGBUILD",
+    "summary": "Compile and package software from source using Arch packaging rules.",
+    "sources": [
+      "arch"
+    ],
+    "tags": [
+      "build",
+      "aur",
+      "pkgbuild",
+      "compile",
+      "package"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Build and install",
+        "cmd": "makepkg -si"
+      }
+    ],
+    "flags": [
+      {
+        "flag": "-s",
+        "meaning": "Install dependencies"
+      },
+      {
+        "flag": "-i",
+        "meaning": "Install the built package"
+      }
+    ],
+    "related": [
+      "paru"
+    ],
+    "man": "makepkg",
+    "starter": false
+  },
+  {
+    "id": "mkinitcpio",
+    "command": "mkinitcpio",
+    "title": "Rebuild initramfs",
+    "summary": "Regenerate the early userspace image after kernel/hook changes.",
+    "sources": [
+      "arch"
+    ],
+    "tags": [
+      "initramfs",
+      "kernel",
+      "boot",
+      "mkinitcpio"
+    ],
+    "danger": "medium",
+    "examples": [
+      {
+        "label": "Rebuild all presets",
+        "cmd": "sudo mkinitcpio -P"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "pacman-syu"
+    ],
+    "man": "mkinitcpio",
+    "starter": false
+  },
+  {
+    "id": "reflector",
+    "command": "reflector",
+    "title": "Refresh pacman mirrors",
+    "summary": "Rank and update Arch mirrorlist for faster downloads.",
+    "sources": [
+      "arch"
+    ],
+    "tags": [
+      "mirrors",
+      "pacman",
+      "speed",
+      "reflector"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Update mirrorlist (example)",
+        "cmd": "sudo reflector --latest 20 --sort rate --save /etc/pacman.d/mirrorlist"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "pacman-syu"
+    ],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "expac",
+    "command": "expac",
+    "title": "Query pacman data flexibly",
+    "summary": "A friendly tool for custom package queries and sizes.",
+    "sources": [
+      "arch"
+    ],
+    "tags": [
+      "packages",
+      "query",
+      "size",
+      "pacman"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Largest installed packages",
+        "cmd": "expac -H M '%m\\t%n' | sort -h | tail"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "pacman-Qi"
+    ],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "pkgfile",
+    "command": "pkgfile",
+    "title": "Find a file in repos",
+    "summary": "Search which uninstalled package contains a given file.",
+    "sources": [
+      "arch"
+    ],
+    "tags": [
+      "search",
+      "file",
+      "package",
+      "repos"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Which package has this binary?",
+        "cmd": "pkgfile nvim"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "pacman-Fy"
+    ],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "bootctl",
+    "command": "bootctl",
+    "title": "systemd-boot status",
+    "summary": "Inspect or update the systemd-boot bootloader.",
+    "sources": [
+      "arch"
+    ],
+    "tags": [
+      "boot",
+      "bootloader",
+      "systemd-boot",
+      "efi"
+    ],
+    "danger": "medium",
+    "examples": [
+      {
+        "label": "Bootloader status",
+        "cmd": "bootctl status"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "mkinitcpio"
+    ],
+    "man": "bootctl",
+    "starter": false
+  },
+  {
+    "id": "localectl",
+    "command": "localectl",
+    "title": "Locale and keyboard",
+    "summary": "View or set system locale and virtual console keymap.",
+    "sources": [
+      "arch"
+    ],
+    "tags": [
+      "locale",
+      "keyboard",
+      "language",
+      "keymap"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Show locale settings",
+        "cmd": "localectl"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "timedatectl"
+    ],
+    "man": "localectl",
+    "starter": false
+  },
+  {
+    "id": "btrfs-subvolume",
+    "command": "btrfs subvolume list",
+    "title": "List Btrfs subvolumes",
+    "summary": "Show subvolumes on a Btrfs filesystem (common on Omarchy installs).",
+    "sources": [
+      "arch"
+    ],
+    "tags": [
+      "btrfs",
+      "subvolume",
+      "snapshot",
+      "filesystem"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "List subvolumes",
+        "cmd": "sudo btrfs subvolume list /"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "snapper",
+      "df"
+    ],
+    "man": "btrfs",
+    "starter": false
+  },
+  {
+    "id": "btrfs-filesystem",
+    "command": "btrfs filesystem usage",
+    "title": "Btrfs space usage",
+    "summary": "Detailed free/used space for a Btrfs filesystem.",
+    "sources": [
+      "arch"
+    ],
+    "tags": [
+      "btrfs",
+      "disk",
+      "space",
+      "usage"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Btrfs usage for /",
+        "cmd": "sudo btrfs filesystem usage /"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "df",
+      "du"
+    ],
+    "man": "btrfs",
+    "starter": false
+  },
+  {
+    "id": "snapper-list",
+    "command": "snapper list",
+    "title": "List Btrfs snapshots",
+    "summary": "Show Snapper snapshots if configured.",
+    "sources": [
+      "arch"
+    ],
+    "tags": [
+      "snapshot",
+      "snapper",
+      "btrfs",
+      "backup",
+      "restore"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "List root snapshots",
+        "cmd": "sudo snapper -c root list"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "btrfs-subvolume"
+    ],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "downgrade",
+    "command": "downgrade",
+    "title": "Downgrade a package",
+    "summary": "Interactively install an older version from the cache or ALA.",
+    "sources": [
+      "arch"
+    ],
+    "tags": [
+      "downgrade",
+      "rollback",
+      "package",
+      "older"
+    ],
+    "danger": "medium",
+    "examples": [
+      {
+        "label": "Downgrade a package",
+        "cmd": "sudo downgrade package"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "pacman-S"
+    ],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "pacman-key",
+    "command": "pacman-key",
+    "title": "Manage pacman keys",
+    "summary": "Initialize and refresh the package signing keyring.",
+    "sources": [
+      "arch"
+    ],
+    "tags": [
+      "keys",
+      "signature",
+      "pacman",
+      "security"
+    ],
+    "danger": "medium",
+    "examples": [
+      {
+        "label": "Populate archlinux keys",
+        "cmd": "sudo pacman-key --populate archlinux"
+      },
+      {
+        "label": "Refresh keys",
+        "cmd": "sudo pacman-key --refresh-keys"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "pacman-syu"
+    ],
+    "man": "pacman-key",
+    "starter": false
+  },
+  {
+    "id": "omarchy-omarchy-update",
+    "command": "omarchy update",
+    "title": "Update Omarchy and system packages",
+    "summary": "Update Omarchy and system packages.",
+    "sources": [
+      "omarchy"
+    ],
+    "tags": [
+      "update",
+      "omarchy",
+      "system",
+      "packages",
+      "upgrade"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Run",
+        "cmd": "omarchy update"
+      },
+      {
+        "label": "Example",
+        "cmd": "omarchy update -y"
+      }
+    ],
+    "flags": [],
+    "related": [],
+    "man": null,
+    "starter": true
+  },
+  {
+    "id": "omarchy-omarchy-pkg-add",
+    "command": "omarchy pkg add",
+    "title": "Install Arch packages if they are missing",
+    "summary": "Install Arch packages if they are missing.",
+    "sources": [
+      "omarchy"
+    ],
+    "tags": [
+      "pkg",
+      "add",
+      "install",
+      "arch",
+      "packages",
+      "they",
+      "missing",
+      "package",
+      "software",
+      "aur"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Run",
+        "cmd": "omarchy pkg add jq ripgrep"
+      }
+    ],
+    "flags": [],
+    "related": [],
+    "man": null,
+    "starter": true
+  },
+  {
+    "id": "omarchy-omarchy-reminder",
+    "command": "omarchy reminder",
+    "title": "Set and show lightweight desktop notification reminders",
+    "summary": "Set and show lightweight desktop notification reminders.",
+    "sources": [
+      "omarchy"
+    ],
+    "tags": [
+      "reminder",
+      "show",
+      "lightweight",
+      "desktop",
+      "notification",
+      "reminders",
+      "notify",
+      "timer",
+      "alarm"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Run",
+        "cmd": "omarchy reminder -i"
+      },
+      {
+        "label": "Example",
+        "cmd": "omarchy reminder 5"
+      },
+      {
+        "label": "Example",
+        "cmd": "omarchy reminder 30 \"Check the oven\""
+      },
+      {
+        "label": "Example",
+        "cmd": "omarchy reminder show"
+      }
+    ],
+    "flags": [],
+    "related": [],
+    "man": null,
+    "starter": true
+  },
+  {
+    "id": "omarchy-omarchy-theme-set",
+    "command": "omarchy theme set",
+    "title": "Apply an Omarchy theme",
+    "summary": "Apply an Omarchy theme.",
+    "sources": [
+      "omarchy"
+    ],
+    "tags": [
+      "theme",
+      "set",
+      "apply",
+      "omarchy",
+      "appearance",
+      "colors",
+      "look",
+      "dark",
+      "light"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Run",
+        "cmd": "omarchy theme list"
+      },
+      {
+        "label": "Example",
+        "cmd": "omarchy theme set \"Tokyo Night\""
+      }
+    ],
+    "flags": [],
+    "related": [],
+    "man": null,
+    "starter": true
+  },
+  {
+    "id": "omarchy-omarchy-capture-screenshot",
+    "command": "omarchy capture screenshot",
+    "title": "Take a screenshot",
+    "summary": "Take a screenshot.",
+    "sources": [
+      "omarchy"
+    ],
+    "tags": [
+      "capture",
+      "screenshot",
+      "take",
+      "record",
+      "screen",
+      "ocr"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Run",
+        "cmd": "omarchy screenshot"
+      },
+      {
+        "label": "Example",
+        "cmd": "omarchy capture screenshot region"
+      }
+    ],
+    "flags": [],
+    "related": [],
+    "man": null,
+    "starter": true
+  },
+  {
+    "id": "omarchy-omarchy-dns",
+    "command": "omarchy dns",
+    "title": "Show or configure the system DNS provider",
+    "summary": "Show or configure the system DNS provider.",
+    "sources": [
+      "omarchy"
+    ],
+    "tags": [
+      "dns",
+      "show",
+      "configure",
+      "system",
+      "provider"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Run",
+        "cmd": "omarchy dns"
+      },
+      {
+        "label": "Example",
+        "cmd": "omarchy dns Cloudflare"
+      },
+      {
+        "label": "Example",
+        "cmd": "omarchy dns Custom"
+      }
+    ],
+    "flags": [],
+    "related": [],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "omarchy-omarchy-menu",
+    "command": "omarchy menu",
+    "title": "Control the Omarchy menu (toggle / summon / close / refresh)",
+    "summary": "Control the Omarchy menu (toggle / summon / close / refresh).",
+    "sources": [
+      "omarchy"
+    ],
+    "tags": [
+      "menu",
+      "control",
+      "omarchy",
+      "summon",
+      "close"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Run",
+        "cmd": "omarchy menu"
+      },
+      {
+        "label": "Example",
+        "cmd": "omarchy menu toggle system"
+      },
+      {
+        "label": "Example",
+        "cmd": "omarchy menu summon style.theme"
+      },
+      {
+        "label": "Example",
+        "cmd": "omarchy menu refresh"
+      }
+    ],
+    "flags": [],
+    "related": [],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "omarchy-omarchy-agent",
+    "command": "omarchy agent",
+    "title": "Launch the default coding agent in a terminal",
+    "summary": "Launch the default coding agent in a terminal.",
+    "sources": [
+      "omarchy"
+    ],
+    "tags": [
+      "agent",
+      "launch",
+      "default",
+      "coding",
+      "terminal"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Run",
+        "cmd": "omarchy agent"
+      },
+      {
+        "label": "Example",
+        "cmd": "omarchy agent --inline"
+      }
+    ],
+    "flags": [],
+    "related": [],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "omarchy-omarchy-share",
+    "command": "omarchy share",
+    "title": "Share clipboard, files, or folders with LocalSend",
+    "summary": "Share clipboard, files, or folders with LocalSend.",
+    "sources": [
+      "omarchy"
+    ],
+    "tags": [
+      "share",
+      "clipboard",
+      "files",
+      "folders",
+      "with",
+      "localsend"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Run",
+        "cmd": "omarchy share clipboard"
+      },
+      {
+        "label": "Example",
+        "cmd": "omarchy share file ~/Downloads/example.txt"
+      }
+    ],
+    "flags": [],
+    "related": [],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "omarchy-omarchy-shell",
+    "command": "omarchy shell",
+    "title": "Send an IPC call to the running Omarchy shell",
+    "summary": "Send an IPC call to the running Omarchy shell.",
+    "sources": [
+      "omarchy"
+    ],
+    "tags": [
+      "shell",
+      "send",
+      "call",
+      "running",
+      "omarchy"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Run",
+        "cmd": "omarchy shell shell ping"
+      },
+      {
+        "label": "Example",
+        "cmd": "omarchy-shell shell toggle omarchy.menu '{\"menu\":\"root\"}'"
+      }
+    ],
+    "flags": [],
+    "related": [],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "omarchy-omarchy-toggle",
+    "command": "omarchy toggle",
+    "title": "Toggle Omarchy features between enabled and disabled",
+    "summary": "Toggle Omarchy features between enabled and disabled.",
+    "sources": [
+      "omarchy"
+    ],
+    "tags": [
+      "toggle",
+      "omarchy",
+      "features",
+      "between",
+      "enabled",
+      "disabled"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Run",
+        "cmd": "omarchy toggle"
+      }
+    ],
+    "flags": [],
+    "related": [],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "omarchy-omarchy-version",
+    "command": "omarchy version",
+    "title": "Print the installed Omarchy version",
+    "summary": "Print the installed Omarchy version.",
+    "sources": [
+      "omarchy"
+    ],
+    "tags": [
+      "version",
+      "print",
+      "installed",
+      "omarchy"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Run",
+        "cmd": "omarchy version"
+      }
+    ],
+    "flags": [],
+    "related": [],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "omarchy-omarchy-font-set",
+    "command": "omarchy font set",
+    "title": "Set the system monospace font",
+    "summary": "Set the system monospace font.",
+    "sources": [
+      "omarchy"
+    ],
+    "tags": [
+      "font",
+      "set",
+      "system",
+      "monospace",
+      "typeface",
+      "typography"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Run",
+        "cmd": "omarchy font list"
+      },
+      {
+        "label": "Example",
+        "cmd": "omarchy font set \"CaskaydiaMono Nerd Font\""
+      }
+    ],
+    "flags": [],
+    "related": [],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "omarchy-omarchy-pkg-drop",
+    "command": "omarchy pkg drop",
+    "title": "Remove all the named packages from the system if they're installed (otherwise ignore)",
+    "summary": "Remove all the named packages from the system if they're installed (otherwise ignore).",
+    "sources": [
+      "omarchy"
+    ],
+    "tags": [
+      "pkg",
+      "drop",
+      "remove",
+      "named",
+      "packages",
+      "from",
+      "system",
+      "installed",
+      "package",
+      "install",
+      "software",
+      "aur"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Run",
+        "cmd": "omarchy pkg drop"
+      }
+    ],
+    "flags": [],
+    "related": [],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "omarchy-omarchy-snapshot",
+    "command": "omarchy snapshot",
+    "title": "Create or restore system snapshots with snapper",
+    "summary": "Create or restore system snapshots with snapper.",
+    "sources": [
+      "omarchy"
+    ],
+    "tags": [
+      "snapshot",
+      "create",
+      "restore",
+      "system",
+      "snapshots",
+      "with",
+      "snapper"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Run",
+        "cmd": "omarchy snapshot"
+      }
+    ],
+    "flags": [],
+    "related": [],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "omarchy-omarchy-font-list",
+    "command": "omarchy font list",
+    "title": "List available monospace fonts",
+    "summary": "List available monospace fonts.",
+    "sources": [
+      "omarchy"
+    ],
+    "tags": [
+      "font",
+      "list",
+      "available",
+      "monospace",
+      "fonts",
+      "typeface",
+      "typography"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Run",
+        "cmd": "omarchy font list"
+      },
+      {
+        "label": "Example",
+        "cmd": "omarchy font set \"CaskaydiaMono Nerd Font\""
+      }
+    ],
+    "flags": [],
+    "related": [],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "omarchy-omarchy-reinstall",
+    "command": "omarchy reinstall",
+    "title": "Reinstall Omarchy packages and reset default configs",
+    "summary": "Reinstall Omarchy packages and reset default configs.",
+    "sources": [
+      "omarchy"
+    ],
+    "tags": [
+      "reinstall",
+      "omarchy",
+      "packages",
+      "reset",
+      "default",
+      "configs"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Run",
+        "cmd": "omarchy reinstall"
+      }
+    ],
+    "flags": [],
+    "related": [],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "omarchy-omarchy-theme-dir",
+    "command": "omarchy theme dir",
+    "title": "Print the directory holding a theme, preferring a user-installed copy",
+    "summary": "Print the directory holding a theme, preferring a user-installed copy.",
+    "sources": [
+      "omarchy"
+    ],
+    "tags": [
+      "theme",
+      "dir",
+      "print",
+      "directory",
+      "holding",
+      "preferring",
+      "copy",
+      "appearance",
+      "colors",
+      "look",
+      "dark",
+      "light"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Run",
+        "cmd": "omarchy theme dir tokyo-night"
+      }
+    ],
+    "flags": [],
+    "related": [],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "omarchy-omarchy-capture-qr",
+    "command": "omarchy capture qr",
+    "title": "Decode a QR code from a screenshot region",
+    "summary": "Decode a QR code from a screenshot region.",
+    "sources": [
+      "omarchy"
+    ],
+    "tags": [
+      "capture",
+      "qr",
+      "decode",
+      "code",
+      "from",
+      "screenshot",
+      "region",
+      "record",
+      "screen",
+      "ocr"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Run",
+        "cmd": "omarchy capture qr"
+      }
+    ],
+    "flags": [],
+    "related": [],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "omarchy-omarchy-launch-tui",
+    "command": "omarchy launch tui",
+    "title": "Launch a TUI command in the default terminal with Omarchy styling",
+    "summary": "Launch a TUI command in the default terminal with Omarchy styling.",
+    "sources": [
+      "omarchy"
+    ],
+    "tags": [
+      "launch",
+      "tui",
+      "command",
+      "default",
+      "terminal",
+      "with",
+      "omarchy",
+      "styling"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Run",
+        "cmd": "omarchy launch tui"
+      }
+    ],
+    "flags": [],
+    "related": [],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "omarchy-omarchy-pkg-remove",
+    "command": "omarchy pkg remove",
+    "title": "Show a fuzzy-finder TUI for picking packages installed on the system to be removed",
+    "summary": "Show a fuzzy-finder TUI for picking packages installed on the system to be removed.",
+    "sources": [
+      "omarchy"
+    ],
+    "tags": [
+      "pkg",
+      "remove",
+      "show",
+      "picking",
+      "packages",
+      "installed",
+      "system",
+      "removed",
+      "package",
+      "install",
+      "software",
+      "aur"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Run",
+        "cmd": "omarchy pkg remove"
+      }
+    ],
+    "flags": [],
+    "related": [],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "omarchy-omarchy-plugin-add",
+    "command": "omarchy plugin add",
+    "title": "Add a shell plugin from git",
+    "summary": "Add a shell plugin from git.",
+    "sources": [
+      "omarchy"
+    ],
+    "tags": [
+      "plugin",
+      "add",
+      "shell",
+      "from",
+      "bar",
+      "widget",
+      "extension"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Run",
+        "cmd": "omarchy plugin add https://github.com/acme/omarchy-weather.git --enable"
+      }
+    ],
+    "flags": [],
+    "related": [],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "omarchy-omarchy-theme-list",
+    "command": "omarchy theme list",
+    "title": "List available themes",
+    "summary": "List available themes.",
+    "sources": [
+      "omarchy"
+    ],
+    "tags": [
+      "theme",
+      "list",
+      "available",
+      "themes",
+      "appearance",
+      "colors",
+      "look",
+      "dark",
+      "light"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Run",
+        "cmd": "omarchy theme list"
+      },
+      {
+        "label": "Example",
+        "cmd": "omarchy theme set \"Tokyo Night\""
+      }
+    ],
+    "flags": [],
+    "related": [],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "omarchy-omarchy-toggle-bar",
+    "command": "omarchy toggle bar",
+    "title": "Toggle bar visibility without killing the Omarchy shell",
+    "summary": "Toggle bar visibility without killing the Omarchy shell.",
+    "sources": [
+      "omarchy"
+    ],
+    "tags": [
+      "toggle",
+      "bar",
+      "visibility",
+      "without",
+      "killing",
+      "omarchy",
+      "shell"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Run",
+        "cmd": "omarchy toggle bar"
+      },
+      {
+        "label": "Example",
+        "cmd": "omarchy toggle bar off"
+      },
+      {
+        "label": "Example",
+        "cmd": "omarchy toggle bar on"
+      }
+    ],
+    "flags": [],
+    "related": [],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "omarchy-omarchy-channel-set",
+    "command": "omarchy channel set",
+    "title": "Set the Omarchy package channel",
+    "summary": "Set the Omarchy package channel.",
+    "sources": [
+      "omarchy"
+    ],
+    "tags": [
+      "channel",
+      "set",
+      "omarchy",
+      "package"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Run",
+        "cmd": "omarchy channel set"
+      }
+    ],
+    "flags": [],
+    "related": [],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "omarchy-omarchy-pkg-aur-add",
+    "command": "omarchy pkg aur add",
+    "title": "Add the named packages to the system from the AUR if they're missing. Returns false if it couldn't be done",
+    "summary": "Add the named packages to the system from the AUR if they're missing. Returns false if it couldn't be done.",
+    "sources": [
+      "omarchy"
+    ],
+    "tags": [
+      "pkg",
+      "aur",
+      "add",
+      "named",
+      "packages",
+      "system",
+      "from",
+      "missing",
+      "returns",
+      "false",
+      "done",
+      "package",
+      "install",
+      "software"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Run",
+        "cmd": "omarchy pkg aur add"
+      }
+    ],
+    "flags": [],
+    "related": [],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "omarchy-omarchy-pkg-install",
+    "command": "omarchy pkg install",
+    "title": "Show a fuzzy-finder TUI for picking new Arch and OPR packages to install",
+    "summary": "Show a fuzzy-finder TUI for picking new Arch and OPR packages to install.",
+    "sources": [
+      "omarchy"
+    ],
+    "tags": [
+      "pkg",
+      "install",
+      "show",
+      "picking",
+      "arch",
+      "packages",
+      "package",
+      "software",
+      "aur"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Run",
+        "cmd": "omarchy pkg install"
+      }
+    ],
+    "flags": [],
+    "related": [],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "omarchy-omarchy-pkg-missing",
+    "command": "omarchy pkg missing",
+    "title": "Returns true if any of the named packages are missing from the system (or false if they're all there)",
+    "summary": "Returns true if any of the named packages are missing from the system (or false if they're all there).",
+    "sources": [
+      "omarchy"
+    ],
+    "tags": [
+      "pkg",
+      "missing",
+      "returns",
+      "true",
+      "named",
+      "packages",
+      "from",
+      "system",
+      "false",
+      "package",
+      "install",
+      "software",
+      "aur"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Run",
+        "cmd": "omarchy pkg missing"
+      }
+    ],
+    "flags": [],
+    "related": [],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "omarchy-omarchy-pkg-present",
+    "command": "omarchy pkg present",
+    "title": "Returns true if all of the named packages are installed on the system (or false if any of them are missing)",
+    "summary": "Returns true if all of the named packages are installed on the system (or false if any of them are missing).",
+    "sources": [
+      "omarchy"
+    ],
+    "tags": [
+      "pkg",
+      "present",
+      "returns",
+      "true",
+      "named",
+      "packages",
+      "installed",
+      "system",
+      "false",
+      "them",
+      "package",
+      "install",
+      "software",
+      "aur"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Run",
+        "cmd": "omarchy pkg present"
+      }
+    ],
+    "flags": [],
+    "related": [],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "omarchy-omarchy-plugin-list",
+    "command": "omarchy plugin list",
+    "title": "List discovered shell plugins",
+    "summary": "List discovered shell plugins.",
+    "sources": [
+      "omarchy"
+    ],
+    "tags": [
+      "plugin",
+      "list",
+      "discovered",
+      "shell",
+      "plugins",
+      "bar",
+      "widget",
+      "extension"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Run",
+        "cmd": "omarchy plugin list"
+      }
+    ],
+    "flags": [],
+    "related": [],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "omarchy-omarchy-restart-app",
+    "command": "omarchy restart app",
+    "title": "Restart an application by killing it and relaunching via uwsm",
+    "summary": "Restart an application by killing it and relaunching via uwsm.",
+    "sources": [
+      "omarchy"
+    ],
+    "tags": [
+      "restart",
+      "app",
+      "application",
+      "killing",
+      "relaunching",
+      "uwsm"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Run",
+        "cmd": "omarchy restart app"
+      }
+    ],
+    "flags": [],
+    "related": [],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "omarchy-omarchy-screensaver",
+    "command": "omarchy screensaver",
+    "title": "Run the Omarchy screensaver using random effects from TTE",
+    "summary": "Run the Omarchy screensaver using random effects from TTE.",
+    "sources": [
+      "omarchy"
+    ],
+    "tags": [
+      "screensaver",
+      "omarchy",
+      "using",
+      "random",
+      "effects",
+      "from"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Run",
+        "cmd": "omarchy screensaver"
+      }
+    ],
+    "flags": [],
+    "related": [],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "omarchy-omarchy-system-lock",
+    "command": "omarchy system lock",
+    "title": "Lock the computer and turn off the display",
+    "summary": "Lock the computer and turn off the display.",
+    "sources": [
+      "omarchy"
+    ],
+    "tags": [
+      "system",
+      "lock",
+      "computer",
+      "turn",
+      "display"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Run",
+        "cmd": "omarchy system lock"
+      }
+    ],
+    "flags": [],
+    "related": [],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "omarchy-omarchy-system-wake",
+    "command": "omarchy system wake",
+    "title": "Wake displays and restore brightness after idle",
+    "summary": "Wake displays and restore brightness after idle.",
+    "sources": [
+      "omarchy"
+    ],
+    "tags": [
+      "system",
+      "wake",
+      "displays",
+      "restore",
+      "brightness",
+      "after",
+      "idle"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Run",
+        "cmd": "omarchy system wake"
+      }
+    ],
+    "flags": [],
+    "related": [],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "omarchy-omarchy-toggle-idle",
+    "command": "omarchy toggle idle",
+    "title": "Toggle idle behavior so the system either idles normally or stays awake",
+    "summary": "Toggle idle behavior so the system either idles normally or stays awake.",
+    "sources": [
+      "omarchy"
+    ],
+    "tags": [
+      "toggle",
+      "idle",
+      "behavior",
+      "system",
+      "either",
+      "idles",
+      "normally",
+      "stays",
+      "awake"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Run",
+        "cmd": "omarchy toggle idle"
+      },
+      {
+        "label": "Example",
+        "cmd": "omarchy toggle idle stay-awake"
+      },
+      {
+        "label": "Example",
+        "cmd": "omarchy-toggle-idle --status"
+      }
+    ],
+    "flags": [],
+    "related": [],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "omarchy-omarchy-agent-prompt",
+    "command": "omarchy agent prompt",
+    "title": "Launch the default coding agent with a prompt",
+    "summary": "Launch the default coding agent with a prompt.",
+    "sources": [
+      "omarchy"
+    ],
+    "tags": [
+      "agent",
+      "prompt",
+      "launch",
+      "default",
+      "coding",
+      "with"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Run",
+        "cmd": "omarchy agent prompt \"Review this project\""
+      }
+    ],
+    "flags": [],
+    "related": [],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "omarchy-omarchy-audio-tuning",
+    "command": "omarchy audio tuning",
+    "title": "Manage the speaker tuning for this laptop",
+    "summary": "Manage the speaker tuning for this laptop.",
+    "sources": [
+      "omarchy"
+    ],
+    "tags": [
+      "audio",
+      "tuning",
+      "manage",
+      "speaker",
+      "this",
+      "laptop"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Run",
+        "cmd": "omarchy audio tuning status"
+      },
+      {
+        "label": "Example",
+        "cmd": "omarchy audio tuning on"
+      },
+      {
+        "label": "Example",
+        "cmd": "omarchy audio tuning off"
+      }
+    ],
+    "flags": [],
+    "related": [],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "omarchy-omarchy-capture-text",
+    "command": "omarchy capture text",
+    "title": "Extract text from a screenshot region with OCR",
+    "summary": "Extract text from a screenshot region with OCR.",
+    "sources": [
+      "omarchy"
+    ],
+    "tags": [
+      "capture",
+      "text",
+      "extract",
+      "from",
+      "screenshot",
+      "region",
+      "with",
+      "record",
+      "screen",
+      "ocr"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Run",
+        "cmd": "omarchy capture text"
+      }
+    ],
+    "flags": [],
+    "related": [],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "omarchy-omarchy-font-current",
+    "command": "omarchy font current",
+    "title": "Show current monospace font",
+    "summary": "Show current monospace font.",
+    "sources": [
+      "omarchy"
+    ],
+    "tags": [
+      "font",
+      "current",
+      "show",
+      "monospace",
+      "typeface",
+      "typography"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Run",
+        "cmd": "omarchy font current"
+      }
+    ],
+    "flags": [],
+    "related": [],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "omarchy-omarchy-hook-install",
+    "command": "omarchy hook install",
+    "title": "Install a hook into ~/.config/omarchy/hooks/<type>.d/",
+    "summary": "Install a hook into ~/.config/omarchy/hooks/<type>.d/.",
+    "sources": [
+      "omarchy"
+    ],
+    "tags": [
+      "hook",
+      "install",
+      "into"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Run",
+        "cmd": "omarchy hook install post-update ~/my-hook"
+      }
+    ],
+    "flags": [],
+    "related": [],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "omarchy-omarchy-launch-about",
+    "command": "omarchy launch about",
+    "title": "Launch the fastfetch TUI that gives information about the current system",
+    "summary": "Launch the fastfetch TUI that gives information about the current system.",
+    "sources": [
+      "omarchy"
+    ],
+    "tags": [
+      "launch",
+      "about",
+      "fastfetch",
+      "that",
+      "gives",
+      "information",
+      "current",
+      "system"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Run",
+        "cmd": "omarchy launch about"
+      }
+    ],
+    "flags": [],
+    "related": [],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "omarchy-omarchy-plugin-clone",
+    "command": "omarchy plugin clone",
+    "title": "Clone a built-in Omarchy shell plugin into your own config",
+    "summary": "Clone a built-in Omarchy shell plugin into your own config.",
+    "sources": [
+      "omarchy"
+    ],
+    "tags": [
+      "plugin",
+      "clone",
+      "omarchy",
+      "shell",
+      "into",
+      "your",
+      "config",
+      "bar",
+      "widget",
+      "extension"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Run",
+        "cmd": "omarchy plugin clone"
+      }
+    ],
+    "flags": [],
+    "related": [],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "omarchy-omarchy-refresh-sddm",
+    "command": "omarchy refresh sddm",
+    "title": "Refresh the SDDM theme from default",
+    "summary": "Refresh the SDDM theme from default.",
+    "sources": [
+      "omarchy"
+    ],
+    "tags": [
+      "refresh",
+      "sddm",
+      "theme",
+      "from",
+      "default",
+      "appearance",
+      "colors",
+      "look",
+      "dark",
+      "light"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Run",
+        "cmd": "omarchy refresh sddm"
+      }
+    ],
+    "flags": [],
+    "related": [],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "omarchy-omarchy-refresh-tmux",
+    "command": "omarchy refresh tmux",
+    "title": "Overwrite the user tmux config with the Omarchy default and reload tmux",
+    "summary": "Overwrite the user tmux config with the Omarchy default and reload tmux.",
+    "sources": [
+      "omarchy"
+    ],
+    "tags": [
+      "refresh",
+      "tmux",
+      "overwrite",
+      "user",
+      "config",
+      "with",
+      "omarchy",
+      "default",
+      "reload"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Run",
+        "cmd": "omarchy refresh tmux"
+      }
+    ],
+    "flags": [],
+    "related": [],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "omarchy-omarchy-restart-btop",
+    "command": "omarchy restart btop",
+    "title": "Reload btop configuration (used by the Omarchy theme switching)",
+    "summary": "Reload btop configuration (used by the Omarchy theme switching).",
+    "sources": [
+      "omarchy"
+    ],
+    "tags": [
+      "restart",
+      "btop",
+      "reload",
+      "configuration",
+      "omarchy",
+      "theme",
+      "appearance",
+      "colors",
+      "look",
+      "dark",
+      "light"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Run",
+        "cmd": "omarchy restart btop"
+      }
+    ],
+    "flags": [],
+    "related": [],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "omarchy-omarchy-restart-tmux",
+    "command": "omarchy restart tmux",
+    "title": "Restart tmux if running with the latest configuration",
+    "summary": "Restart tmux if running with the latest configuration.",
+    "sources": [
+      "omarchy"
+    ],
+    "tags": [
+      "restart",
+      "tmux",
+      "running",
+      "with",
+      "latest",
+      "configuration"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Run",
+        "cmd": "omarchy restart tmux"
+      }
+    ],
+    "flags": [],
+    "related": [],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "omarchy-omarchy-restart-wifi",
+    "command": "omarchy restart wifi",
+    "title": "Unblock and restart the Wi-Fi service",
+    "summary": "Unblock and restart the Wi-Fi service.",
+    "sources": [
+      "omarchy"
+    ],
+    "tags": [
+      "restart",
+      "wifi",
+      "unblock",
+      "service"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Run",
+        "cmd": "omarchy restart wifi"
+      }
+    ],
+    "flags": [],
+    "related": [],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "omarchy-omarchy-system-stats",
+    "command": "omarchy system stats",
+    "title": "Print CPU and memory stats for the shell",
+    "summary": "Print CPU and memory stats for the shell.",
+    "sources": [
+      "omarchy"
+    ],
+    "tags": [
+      "system",
+      "stats",
+      "print",
+      "memory",
+      "shell"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Run",
+        "cmd": "omarchy system stats"
+      }
+    ],
+    "flags": [],
+    "related": [],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "omarchy-omarchy-theme-bg-set",
+    "command": "omarchy theme bg set",
+    "title": "Set the current background image",
+    "summary": "Set the current background image.",
+    "sources": [
+      "omarchy"
+    ],
+    "tags": [
+      "theme",
+      "bg",
+      "set",
+      "current",
+      "background",
+      "image",
+      "appearance",
+      "colors",
+      "look",
+      "dark",
+      "light"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Run",
+        "cmd": "omarchy theme bg set ~/Pictures/background.png"
+      }
+    ],
+    "flags": [],
+    "related": [],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "omarchy-omarchy-theme-extras",
+    "command": "omarchy theme extras",
+    "title": "List the user-installed themes that came from a git clone",
+    "summary": "List the user-installed themes that came from a git clone.",
+    "sources": [
+      "omarchy"
+    ],
+    "tags": [
+      "theme",
+      "extras",
+      "list",
+      "themes",
+      "that",
+      "came",
+      "from",
+      "clone",
+      "appearance",
+      "colors",
+      "look",
+      "dark",
+      "light"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Run",
+        "cmd": "omarchy theme extras"
+      }
+    ],
+    "flags": [],
+    "related": [],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "omarchy-omarchy-theme-remove",
+    "command": "omarchy theme remove",
+    "title": "Remove a user-installed theme",
+    "summary": "Remove a user-installed theme.",
+    "sources": [
+      "omarchy"
+    ],
+    "tags": [
+      "theme",
+      "remove",
+      "appearance",
+      "colors",
+      "look",
+      "dark",
+      "light"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Run",
+        "cmd": "omarchy theme remove \"Tokyo Night\""
+      }
+    ],
+    "flags": [],
+    "related": [],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "omarchy-omarchy-theme-update",
+    "command": "omarchy theme update",
+    "title": "Update user-installed git themes",
+    "summary": "Update user-installed git themes.",
+    "sources": [
+      "omarchy"
+    ],
+    "tags": [
+      "theme",
+      "update",
+      "themes",
+      "appearance",
+      "colors",
+      "look",
+      "dark",
+      "light",
+      "upgrade",
+      "system",
+      "packages"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Run",
+        "cmd": "omarchy theme update"
+      }
+    ],
+    "flags": [],
+    "related": [],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "omarchy-omarchy-default-agent",
+    "command": "omarchy default agent",
+    "title": "Set and launch the default coding agent",
+    "summary": "Set and launch the default coding agent.",
+    "sources": [
+      "omarchy"
+    ],
+    "tags": [
+      "default",
+      "agent",
+      "launch",
+      "coding"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Run",
+        "cmd": "omarchy default agent"
+      },
+      {
+        "label": "Example",
+        "cmd": "omarchy default agent codex"
+      },
+      {
+        "label": "Example",
+        "cmd": "omarchy default agent claude"
+      }
+    ],
+    "flags": [],
+    "related": [],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "omarchy-omarchy-launch-editor",
+    "command": "omarchy launch editor",
+    "title": "Launch the default editor selected via Omarchy defaults",
+    "summary": "Launch the default editor selected via Omarchy defaults.",
+    "sources": [
+      "omarchy"
+    ],
+    "tags": [
+      "launch",
+      "editor",
+      "default",
+      "selected",
+      "omarchy",
+      "defaults"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Run",
+        "cmd": "omarchy launch editor"
+      }
+    ],
+    "flags": [],
+    "related": [],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "omarchy-omarchy-launch-signal",
+    "command": "omarchy launch signal",
+    "title": "Launch Signal or start its installer when missing",
+    "summary": "Launch Signal or start its installer when missing.",
+    "sources": [
+      "omarchy"
+    ],
+    "tags": [
+      "launch",
+      "signal",
+      "start",
+      "installer",
+      "when",
+      "missing"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Run",
+        "cmd": "omarchy launch signal"
+      }
+    ],
+    "flags": [],
+    "related": [],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "omarchy-omarchy-launch-webapp",
+    "command": "omarchy launch webapp",
+    "title": "Launch a URL as a web app in the default supported browser",
+    "summary": "Launch a URL as a web app in the default supported browser.",
+    "sources": [
+      "omarchy"
+    ],
+    "tags": [
+      "launch",
+      "webapp",
+      "default",
+      "supported",
+      "browser"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Run",
+        "cmd": "omarchy launch webapp"
+      }
+    ],
+    "flags": [],
+    "related": [],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "omarchy-omarchy-plugin-enable",
+    "command": "omarchy plugin enable",
+    "title": "Enable a shell plugin",
+    "summary": "Enable a shell plugin.",
+    "sources": [
+      "omarchy"
+    ],
+    "tags": [
+      "plugin",
+      "enable",
+      "shell",
+      "bar",
+      "widget",
+      "extension"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Run",
+        "cmd": "omarchy plugin enable acme.weather --section right"
+      }
+    ],
+    "flags": [],
+    "related": [],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "omarchy-omarchy-plugin-remove",
+    "command": "omarchy plugin remove",
+    "title": "Remove an installed shell plugin",
+    "summary": "Remove an installed shell plugin.",
+    "sources": [
+      "omarchy"
+    ],
+    "tags": [
+      "plugin",
+      "remove",
+      "installed",
+      "shell",
+      "bar",
+      "widget",
+      "extension"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Run",
+        "cmd": "omarchy plugin remove"
+      }
+    ],
+    "flags": [],
+    "related": [],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "omarchy-omarchy-plugin-update",
+    "command": "omarchy plugin update",
+    "title": "Update installed git-managed plugins",
+    "summary": "Update installed git-managed plugins.",
+    "sources": [
+      "omarchy"
+    ],
+    "tags": [
+      "plugin",
+      "update",
+      "installed",
+      "plugins",
+      "shell",
+      "bar",
+      "widget",
+      "extension",
+      "upgrade",
+      "system",
+      "packages"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Run",
+        "cmd": "omarchy plugin update"
+      }
+    ],
+    "flags": [],
+    "related": [],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "omarchy-omarchy-refresh-herdr",
+    "command": "omarchy refresh herdr",
+    "title": "Overwrite the user herdr config with the Omarchy default and reload herdr",
+    "summary": "Overwrite the user herdr config with the Omarchy default and reload herdr.",
+    "sources": [
+      "omarchy"
+    ],
+    "tags": [
+      "refresh",
+      "herdr",
+      "overwrite",
+      "user",
+      "config",
+      "with",
+      "omarchy",
+      "default",
+      "reload"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Run",
+        "cmd": "omarchy refresh herdr"
+      }
+    ],
+    "flags": [],
+    "related": [],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "omarchy-omarchy-refresh-shell",
+    "command": "omarchy refresh shell",
+    "title": "Reset shell.json to Omarchy defaults",
+    "summary": "Reset shell.json to Omarchy defaults.",
+    "sources": [
+      "omarchy"
+    ],
+    "tags": [
+      "refresh",
+      "shell",
+      "reset",
+      "shelljson",
+      "omarchy",
+      "defaults"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Run",
+        "cmd": "omarchy refresh shell"
+      }
+    ],
+    "flags": [],
+    "related": [],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "omarchy-omarchy-restart-audio",
+    "command": "omarchy restart audio",
+    "title": "Restart audio services and recover stuck USB audio devices",
+    "summary": "Restart audio services and recover stuck USB audio devices.",
+    "sources": [
+      "omarchy"
+    ],
+    "tags": [
+      "restart",
+      "audio",
+      "services",
+      "recover",
+      "stuck",
+      "devices"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Run",
+        "cmd": "omarchy restart audio"
+      },
+      {
+        "label": "Example",
+        "cmd": "omarchy-restart-audio"
+      }
+    ],
+    "flags": [],
+    "related": [],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "omarchy-omarchy-restart-helix",
+    "command": "omarchy restart helix",
+    "title": "Reload Helix configuration",
+    "summary": "Reload Helix configuration.",
+    "sources": [
+      "omarchy"
+    ],
+    "tags": [
+      "restart",
+      "helix",
+      "reload",
+      "configuration"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Run",
+        "cmd": "omarchy restart helix"
+      }
+    ],
+    "flags": [],
+    "related": [],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "omarchy-omarchy-restart-herdr",
+    "command": "omarchy restart herdr",
+    "title": "Reload herdr if running with the latest configuration",
+    "summary": "Reload herdr if running with the latest configuration.",
+    "sources": [
+      "omarchy"
+    ],
+    "tags": [
+      "restart",
+      "herdr",
+      "reload",
+      "running",
+      "with",
+      "latest",
+      "configuration"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Run",
+        "cmd": "omarchy restart herdr"
+      }
+    ],
+    "flags": [],
+    "related": [],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "omarchy-omarchy-restart-shell",
+    "command": "omarchy restart shell",
+    "title": "Restart the Omarchy shell",
+    "summary": "Restart the Omarchy shell.",
+    "sources": [
+      "omarchy"
+    ],
+    "tags": [
+      "restart",
+      "shell",
+      "omarchy"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Run",
+        "cmd": "omarchy restart shell"
+      }
+    ],
+    "flags": [],
+    "related": [],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "omarchy-omarchy-system-logout",
+    "command": "omarchy system logout",
+    "title": "Log out after closing application windows",
+    "summary": "Log out after closing application windows.",
+    "sources": [
+      "omarchy"
+    ],
+    "tags": [
+      "system",
+      "logout",
+      "after",
+      "closing",
+      "application",
+      "windows"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Run",
+        "cmd": "omarchy logout"
+      },
+      {
+        "label": "Example",
+        "cmd": "omarchy system logout"
+      }
+    ],
+    "flags": [],
+    "related": [],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "omarchy-omarchy-system-reboot",
+    "command": "omarchy system reboot",
+    "title": "Reboot after closing application windows",
+    "summary": "Reboot after closing application windows.",
+    "sources": [
+      "omarchy"
+    ],
+    "tags": [
+      "system",
+      "reboot",
+      "after",
+      "closing",
+      "application",
+      "windows"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Run",
+        "cmd": "omarchy reboot"
+      },
+      {
+        "label": "Example",
+        "cmd": "omarchy system reboot"
+      }
+    ],
+    "flags": [],
+    "related": [],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "omarchy-omarchy-theme-bg-next",
+    "command": "omarchy theme bg next",
+    "title": "Cycle to the next background for the current theme",
+    "summary": "Cycle to the next background for the current theme.",
+    "sources": [
+      "omarchy"
+    ],
+    "tags": [
+      "theme",
+      "bg",
+      "next",
+      "cycle",
+      "background",
+      "current",
+      "appearance",
+      "colors",
+      "look",
+      "dark",
+      "light"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Run",
+        "cmd": "omarchy theme bg next"
+      }
+    ],
+    "flags": [],
+    "related": [],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "omarchy-omarchy-theme-current",
+    "command": "omarchy theme current",
+    "title": "Show current theme",
+    "summary": "Show current theme.",
+    "sources": [
+      "omarchy"
+    ],
+    "tags": [
+      "theme",
+      "current",
+      "show",
+      "appearance",
+      "colors",
+      "look",
+      "dark",
+      "light"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Run",
+        "cmd": "omarchy theme current"
+      }
+    ],
+    "flags": [],
+    "related": [],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "omarchy-omarchy-theme-install",
+    "command": "omarchy theme install",
+    "title": "Install a theme from a git repository",
+    "summary": "Install a theme from a git repository.",
+    "sources": [
+      "omarchy"
+    ],
+    "tags": [
+      "theme",
+      "install",
+      "from",
+      "repository",
+      "appearance",
+      "colors",
+      "look",
+      "dark",
+      "light"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Run",
+        "cmd": "omarchy theme install git@github.com:example/omarchy-example-theme.git"
+      }
+    ],
+    "flags": [],
+    "related": [],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "pacman-U",
+    "command": "pacman -U",
+    "title": "Install a local package file",
+    "summary": "Install a .pkg.tar.zst built by makepkg or downloaded manually.",
+    "sources": [
+      "arch"
+    ],
+    "tags": [
+      "install",
+      "local",
+      "package",
+      "pkg",
+      "pacman"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Install a built package",
+        "cmd": "sudo pacman -U package-1.0-1-x86_64.pkg.tar.zst"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "makepkg",
+      "pacman-S"
+    ],
+    "man": "pacman",
+    "starter": false
+  },
+  {
+    "id": "pacman-Syyu",
+    "command": "pacman -Syyu",
+    "title": "Force-refresh databases then update",
+    "summary": "Force a full refresh of package databases before upgrading. Useful when mirrors look stale.",
+    "sources": [
+      "arch"
+    ],
+    "tags": [
+      "update",
+      "refresh",
+      "mirrors",
+      "pacman",
+      "force"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Force refresh and upgrade",
+        "cmd": "sudo pacman -Syyu"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "pacman-syu",
+      "reflector"
+    ],
+    "man": "pacman",
+    "starter": false
+  },
+  {
+    "id": "rankmirrors",
+    "command": "rankmirrors",
+    "title": "Rank pacman mirrors",
+    "summary": "Sort a mirrorlist by speed. Often used with /etc/pacman.d/mirrorlist.",
+    "sources": [
+      "arch"
+    ],
+    "tags": [
+      "mirrors",
+      "speed",
+      "pacman",
+      "rank"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Rank mirrors from a list",
+        "cmd": "rankmirrors -n 10 /etc/pacman.d/mirrorlist.backup"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "reflector",
+      "pacman-syu"
+    ],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "archlinux-java",
+    "command": "archlinux-java",
+    "title": "Switch Java versions",
+    "summary": "List and set the default Java environment on Arch.",
+    "sources": [
+      "arch"
+    ],
+    "tags": [
+      "java",
+      "jdk",
+      "version",
+      "switch"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "List Java environments",
+        "cmd": "archlinux-java status"
+      },
+      {
+        "label": "Set default Java",
+        "cmd": "sudo archlinux-java set java-21-openjdk"
+      }
+    ],
+    "flags": [],
+    "related": [],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "locale-gen",
+    "command": "locale-gen",
+    "title": "Generate locales",
+    "summary": "Build locale data after editing /etc/locale.gen.",
+    "sources": [
+      "arch"
+    ],
+    "tags": [
+      "locale",
+      "language",
+      "generate"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Generate locales",
+        "cmd": "sudo locale-gen"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "localectl"
+    ],
+    "man": "locale-gen",
+    "starter": false
+  },
+  {
+    "id": "mkfs-ext4",
+    "command": "mkfs.ext4",
+    "title": "Format a partition as ext4",
+    "summary": "Create an ext4 filesystem. This erases existing data on the partition.",
+    "sources": [
+      "linux",
+      "arch"
+    ],
+    "tags": [
+      "format",
+      "filesystem",
+      "ext4",
+      "disk",
+      "partition"
+    ],
+    "danger": "high",
+    "examples": [
+      {
+        "label": "Format a partition (destructive)",
+        "cmd": "sudo mkfs.ext4 /dev/sdX1"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "lsblk",
+      "mount"
+    ],
+    "man": "mkfs.ext4",
+    "starter": false
+  },
+  {
+    "id": "fdisk",
+    "command": "fdisk",
+    "title": "Edit partition tables",
+    "summary": "Create and change partitions on a disk. Easy to destroy data — double-check the device name.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "partition",
+      "disk",
+      "fdisk",
+      "table"
+    ],
+    "danger": "high",
+    "examples": [
+      {
+        "label": "Open a disk (careful)",
+        "cmd": "sudo fdisk /dev/sdX"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "lsblk",
+      "mkfs-ext4"
+    ],
+    "man": "fdisk",
+    "starter": false
+  },
+  {
+    "id": "dd",
+    "command": "dd",
+    "title": "Copy raw data (disk imaging)",
+    "summary": "Low-level copy between files or devices. of= the wrong disk will wipe it.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "disk",
+      "image",
+      "clone",
+      "raw",
+      "usb",
+      "write"
+    ],
+    "danger": "high",
+    "examples": [
+      {
+        "label": "Write an ISO to a USB (destructive)",
+        "cmd": "sudo dd if=image.iso of=/dev/sdX bs=4M status=progress oflag=sync"
+      }
+    ],
+    "flags": [
+      {
+        "flag": "if=",
+        "meaning": "Input file"
+      },
+      {
+        "flag": "of=",
+        "meaning": "Output file/device"
+      },
+      {
+        "flag": "bs=",
+        "meaning": "Block size"
+      },
+      {
+        "flag": "status=progress",
+        "meaning": "Show progress"
+      }
+    ],
+    "related": [
+      "lsblk",
+      "cp"
+    ],
+    "man": "dd",
+    "starter": false
+  },
+  {
+    "id": "chmod-777",
+    "command": "chmod 777",
+    "title": "Make a file world-writable (usually wrong)",
+    "summary": "Gives everyone read/write/execute. Convenient and insecure — prefer narrower permissions.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "permissions",
+      "chmod",
+      "insecure",
+      "world",
+      "writable"
+    ],
+    "danger": "high",
+    "examples": [
+      {
+        "label": "Avoid this when possible",
+        "cmd": "chmod 777 file"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "chmod"
+    ],
+    "man": "chmod",
+    "starter": false
+  },
+  {
+    "id": "hyprctl",
+    "command": "hyprctl",
+    "title": "Control Hyprland",
+    "summary": "Talk to the Hyprland compositor — monitors, windows, reloads, and more.",
+    "sources": [
+      "arch",
+      "linux"
+    ],
+    "tags": [
+      "hyprland",
+      "wayland",
+      "window",
+      "monitor",
+      "reload",
+      "compositor"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Reload config",
+        "cmd": "hyprctl reload"
+      },
+      {
+        "label": "List monitors",
+        "cmd": "hyprctl monitors"
+      },
+      {
+        "label": "List clients",
+        "cmd": "hyprctl clients"
+      }
+    ],
+    "flags": [],
+    "related": [],
+    "man": null,
+    "starter": true
+  },
+  {
+    "id": "wl-copy",
+    "command": "wl-copy",
+    "title": "Copy text to the clipboard",
+    "summary": "Put text on the Wayland clipboard from a pipe or argument.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "clipboard",
+      "copy",
+      "wayland",
+      "paste"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Copy a string",
+        "cmd": "wl-copy 'hello'"
+      },
+      {
+        "label": "Copy command output",
+        "cmd": "pwd | wl-copy"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "wl-paste"
+    ],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "wl-paste",
+    "command": "wl-paste",
+    "title": "Paste from the clipboard",
+    "summary": "Print the Wayland clipboard contents.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "clipboard",
+      "paste",
+      "wayland"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Paste to terminal",
+        "cmd": "wl-paste"
+      },
+      {
+        "label": "Paste into a file",
+        "cmd": "wl-paste > note.txt"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "wl-copy"
+    ],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "grim",
+    "command": "grim",
+    "title": "Screenshot (Wayland)",
+    "summary": "Capture the screen to an image file. Often paired with slurp for regions.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "screenshot",
+      "capture",
+      "wayland",
+      "screen"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Full screen shot",
+        "cmd": "grim shot.png"
+      },
+      {
+        "label": "Region with slurp",
+        "cmd": "grim -g \"$(slurp)\" shot.png"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "slurp"
+    ],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "slurp",
+    "command": "slurp",
+    "title": "Select a screen region",
+    "summary": "Interactively select a rectangle on screen; prints geometry for grim and others.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "region",
+      "select",
+      "screenshot",
+      "wayland"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Select a region",
+        "cmd": "slurp"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "grim"
+    ],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "notify-send",
+    "command": "notify-send",
+    "title": "Desktop notification",
+    "summary": "Show a notification from a script or the terminal.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "notification",
+      "notify",
+      "desktop",
+      "alert"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Simple notification",
+        "cmd": "notify-send 'Hello' 'From the terminal'"
+      }
+    ],
+    "flags": [],
+    "related": [],
+    "man": "notify-send",
+    "starter": false
+  },
+  {
+    "id": "xdg-open",
+    "command": "xdg-open",
+    "title": "Open a file with the default app",
+    "summary": "Open a file or URL with the application's default handler.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "open",
+      "file",
+      "default",
+      "application",
+      "url"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Open a PDF",
+        "cmd": "xdg-open file.pdf"
+      },
+      {
+        "label": "Open a URL",
+        "cmd": "xdg-open https://omarchy.org"
+      }
+    ],
+    "flags": [],
+    "related": [],
+    "man": "xdg-open",
+    "starter": true
+  },
+  {
+    "id": "trash-put",
+    "command": "trash-put",
+    "title": "Move to trash instead of deleting",
+    "summary": "Safer alternative to rm — sends files to the desktop trash can.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "delete",
+      "trash",
+      "remove",
+      "safe",
+      "recycle",
+      "folders",
+      "files",
+      "folder"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Trash a file",
+        "cmd": "trash-put file.txt"
+      },
+      {
+        "label": "List trash",
+        "cmd": "trash-list"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "rm"
+    ],
+    "man": null,
+    "starter": false
+  },
+  {
+    "id": "systemctl-list-units",
+    "command": "systemctl list-units",
+    "title": "List systemd units",
+    "summary": "Show loaded units and their state.",
+    "sources": [
+      "linux"
+    ],
+    "tags": [
+      "systemd",
+      "services",
+      "list",
+      "units"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Failed units",
+        "cmd": "systemctl --failed"
+      },
+      {
+        "label": "All running services",
+        "cmd": "systemctl list-units --type=service --state=running"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "systemctl-status"
+    ],
+    "man": "systemctl",
+    "starter": false
+  },
+  {
+    "id": "coredumpctl",
+    "command": "coredumpctl",
+    "title": "Inspect application crashes",
+    "summary": "List and examine coredumps from crashed programs.",
+    "sources": [
+      "linux",
+      "arch"
+    ],
+    "tags": [
+      "crash",
+      "coredump",
+      "debug",
+      "segfault"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "List recent coredumps",
+        "cmd": "coredumpctl list"
+      },
+      {
+        "label": "Info for the latest",
+        "cmd": "coredumpctl info"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "journalctl",
+      "dmesg"
+    ],
+    "man": "coredumpctl",
+    "starter": false
+  },
+  {
+    "id": "pacman-Dk",
+    "command": "pacman -Dk",
+    "title": "Check package database",
+    "summary": "Check that local package databases are consistent.",
+    "sources": [
+      "arch"
+    ],
+    "tags": [
+      "check",
+      "database",
+      "pacman",
+      "repair"
+    ],
+    "danger": null,
+    "examples": [
+      {
+        "label": "Check database",
+        "cmd": "sudo pacman -Dk"
+      }
+    ],
+    "flags": [],
+    "related": [
+      "pacman-syu"
+    ],
+    "man": "pacman",
+    "starter": false
+  }
+]

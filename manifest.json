@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "io.github.kimm-stensborg.command-lookup",
+  "name": "Command Lookup",
+  "version": "0.1.0",
+  "author": "Kimm Stensborg",
+  "license": "MIT",
+  "description": "Search and learn Linux, Arch and Omarchy commands",
+  "kinds": [
+    "overlay"
+  ],
+  "keepLoaded": true,
+  "entryPoints": {
+    "overlay": "Commands.qml"
+  }
+}
