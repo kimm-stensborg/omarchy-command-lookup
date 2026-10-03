@@ -1,6 +1,9 @@
 #!/bin/bash
 
-# Enable Command Lookup and bind a key to it.
+# Command Lookup 0.2 — enable the overlay and bind a key.
+#
+# Search Linux, Arch, and Omarchy commands from the keyboard: browse topics,
+# type an intent (“mute mic”), copy examples with Enter.
 #
 #   ./install.sh                 pick a shortcut interactively
 #   ./install.sh --key "SUPER + SHIFT + C"

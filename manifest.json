@@ -2,10 +2,10 @@
   "schemaVersion": 1,
   "id": "io.github.kimm-stensborg.command-lookup",
   "name": "Command Lookup",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "author": "Kimm Stensborg",
   "license": "MIT",
-  "description": "Search and learn Linux, Arch and Omarchy commands",
+  "description": "Search Linux, Arch and Omarchy commands — topics, live Omarchy catalog, copy examples",
   "kinds": [
     "overlay"
   ],

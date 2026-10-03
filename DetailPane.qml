@@ -21,6 +21,7 @@ Item {
   property color selectedBackground: Color.menu.selectedBackground
   property var themeColors: ({})
   property color fallbackColor: Color.accent
+  property string emptyHint: "Pick a command"
 
   signal exampleClicked(int index)
   signal relatedClicked(string id)
@@ -45,7 +46,7 @@ Item {
     visible: !root.entry
     anchors.centerIn: parent
     textFormat: Text.PlainText
-    text: "Pick a command"
+    text: root.emptyHint
     color: root.foreground
     opacity: 0.45
     font.family: root.fontFamily

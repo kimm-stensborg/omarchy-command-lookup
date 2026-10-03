@@ -113,13 +113,15 @@ const none = M.search(library, "rm", { linux: false, arch: false, omarchy: false
 check("no sources yields emptySources", none.meta.emptySources, true)
 
 const idle = M.search(library, "", M.defaultSources(), {}, 10)
-check("idle starters rank first", idle.results[0].id, "rm")
+check("idle browses topics", idle.meta.browsingTopics, true)
+check("idle topics include files", idle.results.some(r => r.topicId === "files"), true)
 
 const used = M.recordUse({}, "rm", 1_700_000_000_000)
 check("frecency records a use", used.rm.n, 1)
-const boosted = M.search(library, "", M.defaultSources(), used, 10)
-check("used starter still first", boosted.results[0].id, "rm")
-check("used marker on result", boosted.results[0].used, true)
+const inFiles = M.search(library, "", M.defaultSources(), used, 10, "files")
+check("topic files lists rm", inFiles.results.some(r => r.id === "rm"), true)
+check("topic meta names the topic", inFiles.meta.topicLabel, "Files & folders")
+check("used marker inside topic", inFiles.results.find(r => r.id === "rm").used, true)
 
 const usedIp = M.recordUse({}, "ip-addr", 1_700_000_000_000)
 const ranked = M.search(library, "show", M.defaultSources(), usedIp, 10)
@@ -158,10 +160,140 @@ check("parse and serialize sources round-trip",
 
 check("parse frecency", M.parseFrecency('{"used":{"rm":{"n":2,"t":9}}}').rm.n, 2)
 
-check("footer mentions copy example", M.footerHints(true).join(" ").includes("copy example"), true)
-check("footer without selection", M.footerHints(false), ["esc close"])
+check("footer mentions copy example", M.footerHints(true, {}).join(" ").includes("copy example"), true)
+check("footer without selection", M.footerHints(false, {}), ["esc close"])
+check("footer topics mode", M.footerHints(true, { browsingTopics: true })[0], "⏎ open topic")
+check("footer did-you-mean mode", M.footerHints(true, { didYouMean: true }).join(" ").includes("refine"), true)
 check("markUsed flips the bullet", M.markUsed([{ id: "rm", used: false, command: "rm", title: "t", summary: "", sources: ["linux"], danger: null, score: 1 }], "rm")[0].used, true)
 check("indexOfId", M.indexOfId([{ id: "a" }, { id: "b" }], "b"), 1)
+
+const livePayload = JSON.stringify({
+  ok: true,
+  commands: [
+    {
+      route: "omarchy theme set",
+      binary: "omarchy-theme-set",
+      group: "theme",
+      name: "set",
+      summary: "Apply an Omarchy theme",
+      requires_sudo: false,
+      hidden: false,
+      args: "<theme-name>",
+      examples: ["omarchy theme set \"Tokyo Night\""],
+      aliases: []
+    },
+    {
+      route: "omarchy audio input mute",
+      binary: "omarchy-audio-input-mute",
+      group: "audio",
+      name: "input mute",
+      summary: "Toggle microphone mute",
+      requires_sudo: false,
+      hidden: false,
+      args: "",
+      examples: [],
+      aliases: []
+    },
+    {
+      route: "omarchy audio output volume",
+      binary: "omarchy-audio-output-volume",
+      group: "audio",
+      name: "output volume",
+      summary: "Set output volume",
+      requires_sudo: false,
+      hidden: false,
+      args: "",
+      examples: [],
+      aliases: []
+    },
+    {
+      route: "omarchy channel set",
+      binary: "omarchy-channel-set",
+      group: "channel",
+      name: "set",
+      summary: "Set the Omarchy package channel.",
+      requires_sudo: true,
+      hidden: false,
+      args: "<stable|rc|edge|dev>",
+      examples: [],
+      aliases: []
+    },
+    {
+      route: "omarchy hidden",
+      binary: "omarchy-hidden",
+      group: "dev",
+      name: "hidden",
+      summary: "Should be skipped",
+      hidden: true,
+      examples: [],
+      aliases: []
+    }
+  ]
+})
+const live = M.fromOmarchyCommandsJson(livePayload)
+check("live catalog skips hidden", live.map(e => e.id).includes("omarchy-hidden"), false)
+check("live catalog ids use binary", live.map(e => e.id).sort(), [
+  "omarchy-audio-input-mute",
+  "omarchy-audio-output-volume",
+  "omarchy-channel-set",
+  "omarchy-theme-set"
+])
+check("live mute has a run example", M.copyTarget(live.find(e => e.id === "omarchy-audio-input-mute"), 0), "omarchy audio input mute")
+check("sudo becomes medium danger", live.find(e => e.id === "omarchy-channel-set").danger, "medium")
+check("live tags include group", live.find(e => e.id === "omarchy-audio-input-mute").tags.includes("audio"), true)
+
+const merged = M.mergeLibraries(library, live)
+const theme = merged.find(e => e.command === "omarchy theme set")
+check("merge keeps curated id", theme.id, "omarchy-theme-set")
+check("merge keeps curated title", theme.title, "Apply a theme")
+check("merge keeps curated examples", theme.examples[0].cmd, "omarchy theme set catppuccin")
+check("merge adds missing live rows", merged.some(e => e.id === "omarchy-audio-input-mute"), true)
+check("merge leaves linux rows alone", merged.filter(e => e.sources.includes("linux")).length, library.filter(e => e.sources.includes("linux")).length)
+check("empty live catalog is a no-op", M.mergeLibraries(library, []).length, library.length)
+check("bad omarchy json yields empty", M.fromOmarchyCommandsJson("not-json"), [])
+
+const mute = live.find(e => e.id === "omarchy-audio-input-mute")
+check("mute intent includes mic", mute.tags.includes("mic"), true)
+check("mute intent includes mute mic phrase", mute.tags.includes("mute mic"), true)
+check("channel set parses args into flags", live.find(e => e.id === "omarchy-channel-set").flags.some(f => f.flag === "<stable|rc|edge|dev>"), true)
+check("theme set parses args into flags", live.find(e => e.id === "omarchy-theme-set").flags.some(f => f.flag === "<theme-name>"), true)
+
+const agentLive = M.fromOmarchyCommandsJson(JSON.stringify({
+  commands: [{
+    route: "omarchy agent",
+    binary: "omarchy-agent",
+    group: "agent",
+    name: "",
+    summary: "Launch the default coding agent",
+    args: "[--inline] [--pick]",
+    examples: ["omarchy agent"],
+    aliases: [],
+    hidden: false,
+    requires_sudo: false
+  }]
+}))[0]
+check("parses long flags from args", agentLive.flags.map(f => f.flag).sort(), ["--inline", "--pick"])
+
+const enriched = M.enrichLibrary(M.mergeLibraries(library, live))
+const muteEnriched = enriched.find(e => e.command === "omarchy audio input mute")
+check("enrich keeps mute intent tags", muteEnriched.tags.includes("microphone"), true)
+check("enrich suggests omarchy related", muteEnriched.related.length > 0, true)
+check("mute mic ranks audio input mute first", M.search(enriched, "mute mic", { linux: false, arch: false, omarchy: true }, {}, 5).results[0].command, "omarchy audio input mute")
+
+const linuxFlags = M.enrichLibrary(M.normalizeLibrary([{
+  id: "ps", command: "ps", title: "List processes", summary: "Show processes.",
+  sources: ["linux"], tags: ["process"], examples: [{ label: "All", cmd: "ps aux" }],
+  flags: [], related: [], man: "ps"
+}]))
+check("common flags fill empty linux row", linuxFlags[0].flags.some(f => f.flag === "aux"), true)
+check("common related fill empty linux row", linuxFlags[0].related.includes("pgrep"), true)
+check("search synonym folder~directory", M.termVariants("folder").includes("directory"), true)
+
+const misspelled = M.search(library, "rmdr", M.defaultSources(), {}, 10)
+check("did you mean on typo", misspelled.meta.didYouMean, true)
+check("did you mean suggests rmdir", misspelled.results.some(r => r.id === "rmdir"), true)
+check("exact match is not did-you-mean", M.search(library, "rm", M.defaultSources(), {}, 10).meta.didYouMean, false)
+check("edit distance close", M.editDistance("rmdir", "rmdr") <= 2, true)
 
 if (fs.existsSync(path.join(__dirname, "commands.json"))) {
   const raw = JSON.parse(fs.readFileSync(path.join(__dirname, "commands.json"), "utf8"))

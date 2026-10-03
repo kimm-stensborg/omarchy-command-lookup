@@ -27,21 +27,27 @@ Item {
 
   property bool opened: false
   property string queryText: ""
+  property string topicId: ""
   property int selectedIndex: 0
   property int exampleIndex: 0
   property int copiedIndex: -1
   property var library: []
+  property var baseLibrary: []
   property var results: []
   property var meta: ({})
   property var sources: Model.defaultSources()
   property var frecency: ({})
   property string statusMessage: ""
   property bool libraryReady: false
+  property bool omarchyCatalogPending: false
   property var themeColors: ({})
 
   readonly property var current: root.selectedIndex >= 0 && root.selectedIndex < root.results.length
     ? root.results[root.selectedIndex] : null
-  readonly property var currentEntry: root.current ? Model.findById(root.library, root.current.id) : null
+  readonly property bool currentIsTopic: !!(root.current && root.current.kind === "topic")
+  readonly property var currentEntry: root.currentIsTopic || !root.current
+    ? null
+    : Model.findById(root.library, root.current.id)
   readonly property var related: Model.relatedEntries(root.library, root.currentEntry, root.sources, 6)
   readonly property color matchColor: root.themeColors.yellow || root.accent
   readonly property color warningColor: root.themeColors.red || Color.urgent
@@ -79,13 +85,16 @@ Item {
     root.exampleIndex = 0
     root.copiedIndex = -1
     root.statusMessage = ""
+    root.topicId = ""
     root.sources = Model.parseSavedSources(sourcesFile.text())
     root.frecency = Model.parseFrecency(frecencyFile.text())
     root.themeColors = Model.themeColors(themeFile.text())
     root.queryText = ""
     if (payload.query) root.queryText = String(payload.query)
+    if (payload.topic) root.topicId = String(payload.topic)
     if (payload.sources) root.sources = Model.normalizeSources(payload.sources)
     root.ensureLibrary()
+    root.fetchOmarchyCatalog()
     root.refresh()
     Qt.callLater(function() { keyCatcher.forceActiveFocus() })
   }
@@ -105,13 +114,45 @@ Item {
     var data = null
     try { data = JSON.parse(text) } catch (e) { data = null }
     var list = Array.isArray(data) ? data : (data && data.commands ? data.commands : [])
-    root.library = Model.normalizeLibrary(list)
+    root.baseLibrary = Model.normalizeLibrary(list)
+    root.library = Model.enrichLibrary(root.baseLibrary)
+    root.libraryReady = root.library.length > 0
+    root.refresh()
+    root.fetchOmarchyCatalog()
+  }
+
+  // Pull the live Omarchy CLI catalog and merge it over the shipped library.
+  // Curated titles/tags/examples win; missing routes are appended.
+  function fetchOmarchyCatalog() {
+    if (omarchyCatalogProc.running) {
+      root.omarchyCatalogPending = true
+      return
+    }
+    omarchyCatalogProc.command = ["omarchy", "commands", "--json"]
+    omarchyCatalogProc.running = true
+  }
+
+  function applyOmarchyCatalog(text) {
+    var live = Model.fromOmarchyCommandsJson(text)
+    if (!live.length) return
+    root.library = Model.enrichLibrary(Model.mergeLibraries(root.baseLibrary, live))
     root.libraryReady = root.library.length > 0
     root.refresh()
   }
 
   function setQuery(next) {
     root.queryText = next
+    // Topic drill-in stays while typing; Esc clears the topic.
+    root.selectedIndex = 0
+    root.exampleIndex = 0
+    root.copiedIndex = -1
+    pointerGate.reset()
+    root.refresh()
+  }
+
+  function setTopic(id) {
+    root.topicId = id ? String(id) : ""
+    root.queryText = ""
     root.selectedIndex = 0
     root.exampleIndex = 0
     root.copiedIndex = -1
@@ -132,7 +173,7 @@ Item {
   function refresh() {
     var keepId = root.current ? root.current.id : ""
     var keepExample = root.exampleIndex
-    var found = Model.search(root.library, root.queryText, root.sources, root.frecency, Model.MAX_RESULTS)
+    var found = Model.search(root.library, root.queryText, root.sources, root.frecency, Model.MAX_RESULTS, root.topicId)
     root.results = found.results
     root.meta = found.meta
     var at = keepId ? Model.indexOfId(root.results, keepId) : -1
@@ -143,6 +184,14 @@ Item {
       root.selectedIndex = root.results.length ? 0 : 0
       root.exampleIndex = 0
     }
+  }
+
+  function activateSelection() {
+    if (root.currentIsTopic) {
+      root.setTopic(root.current.topicId)
+      return
+    }
+    root.copyExample(root.exampleIndex)
   }
 
   function move(delta) {
@@ -177,11 +226,12 @@ Item {
       sourcesFile.setText(Model.serializeSources(root.sources))
     }
 
+    root.topicId = ""
     var at = Model.indexOfId(root.results, entry.id)
     if (at < 0 || sourcesChanged) {
       root.queryText = entry.command
       root.copiedIndex = -1
-      var found = Model.search(root.library, root.queryText, root.sources, root.frecency, Model.MAX_RESULTS)
+      var found = Model.search(root.library, root.queryText, root.sources, root.frecency, Model.MAX_RESULTS, "")
       root.results = found.results
       root.meta = found.meta
       at = Model.indexOfId(root.results, entry.id)
@@ -205,6 +255,10 @@ Item {
   // Copy the highlighted example. Does not reshuffle the list mid-browse —
   // frecency applies on the next search / open.
   function copyExample(index) {
+    if (root.currentIsTopic) {
+      root.setTopic(root.current.topicId)
+      return
+    }
     var entry = root.currentEntry
     if (!entry) return
     var idx = index >= 0 ? index : root.exampleIndex
@@ -224,6 +278,7 @@ Item {
   }
 
   function openMan() {
+    if (root.currentIsTopic) return
     var entry = root.currentEntry
     if (!entry || !entry.man) {
       root.statusMessage = "No man page for this one"
@@ -244,8 +299,17 @@ Item {
     if (root.statusMessage) return root.statusMessage
     var total = root.meta && root.meta.total !== undefined ? root.meta.total : 0
     var shown = root.meta && root.meta.shown !== undefined ? root.meta.shown : 0
+    if (root.meta && root.meta.browsingTopics) {
+      return shown ? ("Topics · " + shown) : "Nothing in these sources"
+    }
+    if (root.meta && root.meta.didYouMean) {
+      return "Did you mean…"
+    }
+    if (root.meta && root.meta.idle && root.meta.topicLabel) {
+      return root.meta.topicLabel + " · " + shown
+    }
     if (root.meta && root.meta.idle) {
-      return shown ? ("Starters · " + shown + " of " + root.library.length) : "Nothing in these sources"
+      return shown ? ("Browse · " + shown) : "Nothing in these sources"
     }
     if (!shown) return "Nothing matches"
     if (root.meta && root.meta.truncated) return "Showing " + shown + " of " + total
@@ -309,6 +373,24 @@ Item {
     stderr: StdioCollector { waitForEnd: true }
   }
 
+  Process {
+    id: omarchyCatalogProc
+    stdout: StdioCollector {
+      waitForEnd: true
+      onStreamFinished: root.applyOmarchyCatalog(text)
+    }
+    stderr: StdioCollector {
+      waitForEnd: true
+      onStreamFinished: if (text.trim().length) console.warn(root.pluginId + " omarchy catalog:", text.trim())
+    }
+    onExited: {
+      if (root.omarchyCatalogPending) {
+        root.omarchyCatalogPending = false
+        Qt.callLater(root.fetchOmarchyCatalog)
+      }
+    }
+  }
+
   Timer {
     id: statusTimer
     interval: 1800
@@ -367,6 +449,7 @@ Item {
         Keys.onPressed: function(event) {
           if (event.key === Qt.Key_Escape) {
             if (root.queryText) root.setQuery("")
+            else if (root.topicId) root.setTopic("")
             else root.close()
             event.accepted = true
           } else if (event.key === Qt.Key_Up) {
@@ -395,7 +478,7 @@ Item {
             root.selectAbsolute(root.results.length - 1); event.accepted = true
           } else if (event.key === Qt.Key_Return || event.key === Qt.Key_Enter) {
             if (event.modifiers & Qt.ShiftModifier) root.openMan()
-            else root.copyExample(root.exampleIndex)
+            else root.activateSelection()
             event.accepted = true
           } else if ((event.modifiers & Qt.AltModifier) && event.key === Qt.Key_1) {
             root.togglePill("linux"); event.accepted = true
@@ -437,7 +520,10 @@ Item {
             anchors.left: parent.left
             anchors.verticalCenter: parent.verticalCenter
             width: Math.max(0, headerLine.width - metaLine.width - Style.space(24))
-            text: root.queryText || "Search commands… delete folders, show ip, theme"
+            text: root.queryText
+              || (root.topicId && root.meta && root.meta.topicLabel
+                  ? ("Search in " + root.meta.topicLabel + "…")
+                  : "Search or pick a topic… delete folders, mute mic")
             color: root.foreground
             opacity: root.queryText ? 1 : 0.58
             font.family: root.fontFamily
@@ -527,7 +613,9 @@ Item {
               readonly property color tone: root.sourceTone(row.primarySource)
 
               width: ListView.view.width
-              height: root.rowHeight
+              height: row.entry && (row.entry.kind === "topic" || (root.meta && root.meta.didYouMean))
+                ? root.rowHeight + Style.space(14)
+                : root.rowHeight
               radius: root.cornerRadius
               color: row.hasCursor ? root.selectedBackground : "transparent"
 
@@ -542,19 +630,44 @@ Item {
                 opacity: row.hasCursor ? 1 : 0.55
               }
 
-              Text {
-                id: cmdText
+              Column {
                 anchors.left: parent.left
                 anchors.leftMargin: root.rowInset + Style.space(6)
                 anchors.right: badges.left
                 anchors.rightMargin: Style.space(8)
                 anchors.verticalCenter: parent.verticalCenter
-                textFormat: Text.StyledText
-                text: row.entry ? Model.highlightHtml(row.entry.command, root.queryText, root.matchColor) : ""
-                color: row.hasCursor ? root.selectedText : root.foreground
-                font.family: root.fontFamily
-                font.pixelSize: Style.font.body
-                elide: Text.ElideRight
+                spacing: Style.space(1)
+
+                Text {
+                  id: cmdText
+                  width: parent.width
+                  textFormat: Text.StyledText
+                  text: row.entry
+                    ? (row.entry.kind === "topic"
+                        ? row.entry.command
+                        : Model.highlightHtml(row.entry.command, root.queryText, root.matchColor))
+                    : ""
+                  color: row.hasCursor ? root.selectedText : root.foreground
+                  font.family: root.fontFamily
+                  font.pixelSize: Style.font.body
+                  elide: Text.ElideRight
+                }
+
+                Text {
+                  width: parent.width
+                  visible: !!(row.entry && (row.entry.kind === "topic" || (root.meta && root.meta.didYouMean)))
+                  textFormat: Text.PlainText
+                  text: row.entry
+                    ? (row.entry.kind === "topic"
+                        ? row.entry.summary
+                        : row.entry.title)
+                    : ""
+                  color: row.hasCursor ? root.selectedText : root.foreground
+                  opacity: 0.55
+                  font.family: root.fontFamily
+                  font.pixelSize: Style.font.caption
+                  elide: Text.ElideRight
+                }
               }
 
               Row {
@@ -563,6 +676,16 @@ Item {
                 anchors.rightMargin: root.rowInset
                 anchors.verticalCenter: parent.verticalCenter
                 spacing: Style.space(6)
+
+                Text {
+                  visible: !!(row.entry && row.entry.kind === "topic")
+                  textFormat: Text.PlainText
+                  text: row.entry && row.entry.topicCount !== undefined ? String(row.entry.topicCount) : ""
+                  color: root.accent
+                  opacity: row.hasCursor ? 0.95 : 0.7
+                  font.family: root.fontFamily
+                  font.pixelSize: Style.font.caption
+                }
 
                 Text {
                   visible: !!(row.entry && row.entry.danger)
@@ -583,7 +706,7 @@ Item {
                 }
 
                 Repeater {
-                  model: row.entry ? Model.sourceKeys(row.entry) : []
+                  model: row.entry && row.entry.kind !== "topic" ? Model.sourceKeys(row.entry) : []
                   Text {
                     required property string modelData
                     textFormat: Text.PlainText
@@ -627,6 +750,11 @@ Item {
             exampleIndex: root.exampleIndex
             copiedIndex: root.copiedIndex
             queryText: root.queryText
+            emptyHint: root.currentIsTopic
+              ? ((root.current && root.current.summary) || "Press Enter to browse this topic")
+              : ((root.meta && root.meta.didYouMean)
+                  ? "Close match — Enter copies the example"
+                  : "Pick a command")
             fontFamily: root.fontFamily
             foreground: root.foreground
             borderColor: root.borderColor
@@ -660,7 +788,7 @@ Item {
           height: root.footerHeight
           textFormat: Text.PlainText
           verticalAlignment: Text.AlignVCenter
-          text: Model.footerHints(!!root.current).join("   ")
+          text: Model.footerHints(!!root.currentEntry || root.currentIsTopic, root.meta).join("   ")
           color: root.foreground
           opacity: 0.45
           font.family: root.fontFamily
